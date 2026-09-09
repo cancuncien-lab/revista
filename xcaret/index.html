@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiero ir a Xcaret sin romper el cochinito</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Questrial&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<script src="/paquetes.js" defer></script>
+<style>
+:root{
+  --magenta:#0E7C8C; --rosa:#00B3BE; --cian:#FF7A59;
+  --verde:#35A96B; --amarillo:#FFC24B; --naranja:#FF8A3D;
+  --tinta:#10333A; --gris:#5A6E72; --linea:#D9E4E2; --papel:#fff;
+  --arena:#EFE7D9; --arenaclara:#FAF3E7; --mar:#04566A; --aqua:#35C8CE;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Karla',sans-serif;background:var(--arena);color:var(--tinta);line-height:1.55}
+.revista{max-width:1000px;margin:0 auto;background:var(--papel);min-height:100vh;
+  box-shadow:0 0 40px rgba(4,60,70,.16)}
+
+/* ---------------- PORTADA ---------------- */
+.portada{position:relative;min-height:100vh;display:flex;flex-direction:column;
+  background-image:linear-gradient(180deg,rgba(2,44,58,.34) 0%,rgba(2,44,58,0) 17%),linear-gradient(96deg,rgba(3,46,60,.50) 0%,rgba(3,46,60,.30) 26%,rgba(3,46,60,.08) 48%,rgba(3,46,60,0) 66%),url(img/01-dd64b0a1.jpg);background-size:cover;background-position:center;background-repeat:no-repeat;color:#fff;overflow:hidden}
+
+
+.p-top{padding:30px 40px 0;display:flex;justify-content:space-between;align-items:flex-start;
+  position:relative;z-index:2;font-size:13px;letter-spacing:.02em}
+.marca-logo{width:250px;height:auto;display:block;filter:drop-shadow(0 2px 14px rgba(2,40,52,.22))}
+@media(max-width:780px){.marca-logo{width:186px}}
+.p-centro{flex:1;display:flex;flex-direction:column;justify-content:center;
+  padding:0 40px;position:relative;z-index:2}
+.p-anio{font-family:'Questrial',sans-serif;font-size:clamp(74px,17vw,168px);
+  line-height:.82;color:rgba(255,255,255,.26);letter-spacing:-.03em;margin-bottom:-8px}
+.p-titulo{font-family:'Questrial',sans-serif;font-size:clamp(31px,5.6vw,58px);
+  line-height:1.02;letter-spacing:-.02em;max-width:16ch;text-shadow:0 2px 28px rgba(2,38,50,.32)}
+.p-titulo-en{text-shadow:0 1px 16px rgba(2,38,50,.34);font-family:'Questrial',sans-serif;font-size:clamp(15px,2.4vw,21px);
+  letter-spacing:.06em;text-transform:uppercase;color:var(--amarillo);margin-top:14px}
+.p-bajada{text-shadow:0 1px 18px rgba(2,38,50,.38);margin-top:18px;font-size:clamp(15px,2vw,18px);max-width:44ch;opacity:.92}
+.p-cifras{display:flex;gap:34px;margin-top:34px;flex-wrap:wrap}
+.cifra strong{font-family:'Questrial',sans-serif;font-size:32px;display:block;line-height:1;text-shadow:0 1px 16px rgba(2,38,50,.38)}
+.cifra span{font-size:13px;opacity:.8}
+.ola{position:absolute;left:0;right:0;bottom:74px;width:100%;height:150px;z-index:1;display:block}
+.p-pie{padding:26px 40px 34px;position:relative;z-index:2;
+  background:#FAF3E7;color:#0C5A68;display:flex;justify-content:space-between;
+  align-items:center;flex-wrap:wrap;gap:14px;font-size:13.5px;z-index:3}
+.btn-idioma{background:#fff;color:var(--magenta);border:1.5px solid var(--magenta);
+  font-family:'Questrial',sans-serif;font-size:15px;padding:12px 22px;border-radius:30px;
+  cursor:pointer;transition:background .18s ease}
+.btn-idioma:hover{background:#E9F6F5}
+.btn-idioma:focus-visible{outline:3px solid var(--amarillo);outline-offset:3px}
+.nb.idioma{border-color:var(--magenta);color:var(--magenta);font-weight:600}
+.btn-entrar{background:var(--magenta);color:#fff;border:none;font-family:'Questrial',sans-serif;
+  font-size:16px;padding:13px 26px;border-radius:30px;cursor:pointer;transition:transform .18s ease}
+.btn-entrar:hover{transform:translateY(-2px)}
+.btn-entrar:focus-visible{outline:3px solid var(--naranja);outline-offset:3px}
+
+/* ---------------- ÍNDICE ---------------- */
+.indice{padding:44px 40px 60px;display:none}
+.idx-top{display:flex;align-items:center;gap:13px;margin-bottom:6px}
+.idx-top img{width:40px;height:auto;display:block;flex:none}
+.idx-h{font-family:'Questrial',sans-serif;font-size:34px;color:var(--magenta);
+  letter-spacing:-.015em}
+.idx-sub{color:var(--gris);margin-bottom:26px;max-width:60ch}
+.idx-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:14px}
+.idx-card{border:1px solid var(--linea);border-left:5px solid var(--rosa);
+  padding:16px 18px;cursor:pointer;background:#fff;text-align:left;font:inherit;
+  transition:border-color .16s ease,background .16s ease}
+.idx-card:hover{background:#E9F6F5;border-left-color:var(--magenta)}
+.idx-card:focus-visible{outline:3px solid var(--cian);outline-offset:2px}
+.idx-card.libre{border-left-color:var(--cian)}
+.idx-card.libre:hover{background:#FFF2EC;border-left-color:#E4603F}
+.idx-card .n{font-size:11.5px;color:var(--gris)}
+.idx-card .t{font-family:'Questrial',sans-serif;font-size:18px;color:var(--tinta);
+  margin:3px 0 6px;line-height:1.15}
+.idx-card .d{font-size:13px;color:var(--gris)}
+.idx-card .sku-mini{font-family:ui-monospace,'SFMono-Regular',Menlo,monospace;
+  font-size:11.5px;color:#0E6C7A;background:#E6F4F3;padding:3px 7px;
+  border-radius:3px;display:inline-block;margin-top:7px;word-break:break-word}
+.idx-card .cod-mini{background:var(--magenta);color:#fff;font-size:10.5px;font-weight:700;
+  padding:2px 7px;border-radius:3px;letter-spacing:.04em;margin-right:6px}
+.idx-card.libre .cod-mini{background:var(--cian)}
+.dia-badge{font-family:'Questrial',sans-serif;background:var(--magenta);color:#fff;
+  font-size:12px;padding:3px 10px;border-radius:20px;letter-spacing:.04em;display:inline-block}
+.idx-card.libre .dia-badge{background:var(--cian)}
+
+/* bloque de resumen del paquete */
+.resumen{border:2px solid var(--magenta);border-radius:8px;padding:20px 22px;margin-bottom:26px}
+.resumen h3{font-family:'Questrial',sans-serif;color:var(--magenta);font-size:19px;
+  margin-bottom:10px;font-weight:400}
+.resumen p{font-size:14px;color:#22484E;max-width:70ch}
+.resumen table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:14px}
+.resumen th{text-align:left;background:#E6F4F3;color:var(--magenta);padding:8px 10px;
+  font-family:'Questrial',sans-serif;font-weight:400}
+.resumen td{padding:8px 10px;border-bottom:1px solid var(--linea);vertical-align:top}
+.resumen td:last-child{text-align:right;white-space:nowrap;font-weight:700}
+.resumen tr:last-child td{border-bottom:none}
+.resumen .tot td{background:#E9F6F5;color:var(--magenta);font-weight:700}
+
+.personaliza{border:2px dashed var(--verde);border-radius:8px;padding:16px 18px;
+  margin-bottom:26px;background:#F3FAF5}
+.personaliza .t{font-family:'Questrial',sans-serif;color:#2E7D52;font-size:17px;margin-bottom:7px}
+.personaliza p{font-size:13.8px;color:#22484E;max-width:72ch}
+.alerta-dia{background:#FFF9F0;border:2px solid var(--naranja);border-radius:8px;
+  padding:16px 18px;margin-bottom:26px}
+.alerta-dia .t{font-family:'Questrial',sans-serif;color:#B8690A;font-size:16px;margin-bottom:7px}
+.alerta-dia p{font-size:13.8px;color:#22484E;max-width:70ch}
+.alerta-dia table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:12px}
+.alerta-dia td{padding:6px 0;border-bottom:1px dotted #E8D5B8}
+.alerta-dia td:last-child{text-align:right;font-weight:700;color:#B8690A}
+.alerta-dia tr:last-child td{border-bottom:none}
+
+/* ---------------- FICHA ---------------- */
+.ficha-wrap{display:none}
+.nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--linea);
+  padding:11px 22px;display:flex;align-items:center;gap:12px;justify-content:space-between}
+.nav-btns{display:flex;gap:8px;align-items:center}
+.nav-marca{display:flex;gap:10px;align-items:center}
+.nav-marca img{width:24px;height:auto;display:block}
+.nb{background:#fff;border:1px solid var(--linea);border-radius:6px;padding:7px 13px;
+  font:inherit;font-size:14px;cursor:pointer;color:var(--tinta)}
+.nb:hover{border-color:var(--magenta);color:var(--magenta)}
+.nb:focus-visible{outline:3px solid var(--cian);outline-offset:2px}
+.nb:disabled{opacity:.35;cursor:default}
+.nav .cont{font-size:13px;color:var(--gris)}
+
+.b-head{background:var(--magenta);color:#fff;padding:28px 34px 24px}
+.b-head.libre{background:linear-gradient(135deg,#F2703F,#FFC24B)}
+.b-dia{font-family:'Questrial',sans-serif;font-size:13px;letter-spacing:.14em;
+  text-transform:uppercase;opacity:.75;margin-bottom:7px}
+.b-prov{font-size:12.5px;opacity:.7;margin-bottom:5px}
+.b-title{font-family:'Questrial',sans-serif;font-size:clamp(28px,5vw,38px);line-height:1;
+  letter-spacing:-.014em}
+.b-sub{font-size:15.5px;opacity:.88;margin-top:7px;max-width:56ch}
+.b-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:19px}
+.pill{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);
+  padding:5px 13px;border-radius:20px;font-size:13px}
+.b-sku{margin-top:20px;background:#fff;color:var(--tinta);padding:14px 16px;
+  border-radius:6px;border-left:5px solid var(--amarillo)}
+.b-sku .lbl{font-size:11.5px;color:var(--gris);margin-bottom:7px}
+.b-sku .fila{display:flex;align-items:center;gap:9px;margin-bottom:6px;flex-wrap:wrap}
+.b-sku .fila:last-of-type{margin-bottom:0}
+.cod{background:var(--magenta);color:#fff;font-weight:700;font-size:12px;
+  padding:3px 9px;border-radius:4px;letter-spacing:.04em;flex:none}
+.skuname{font-family:ui-monospace,'SFMono-Regular',Menlo,monospace;font-size:13.5px;
+  font-weight:600;background:#EDF5F4;padding:4px 9px;border-radius:4px;
+  border:1px solid var(--linea);word-break:break-word}
+.b-sku .nota{font-size:12.5px;color:var(--gris);margin-top:9px;line-height:1.45}
+.b-sku .nota b{color:var(--magenta)}
+
+.b-body{display:grid;grid-template-columns:1.3fr .95fr}
+.b-main{padding:26px 32px;border-right:1px solid var(--linea)}
+.b-side{padding:26px 28px;background:#F6FBFA}
+.b-sec{margin-bottom:24px}
+.b-sec:last-child{margin-bottom:0}
+.b-h{font-family:'Questrial',sans-serif;font-size:15.5px;margin-bottom:10px;
+  display:flex;align-items:center;gap:9px}
+.b-h::before{content:"";width:17px;height:3px;background:var(--rosa);border-radius:2px;flex:none}
+.b-h.v::before{background:var(--verde)}
+.b-h.c::before{background:var(--cian)}
+.b-h.n::before{background:var(--naranja)}
+.b-h.a::before{background:var(--amarillo)}
+.lista{list-style:none;font-size:14px}
+.lista li{padding:4px 0 4px 15px;position:relative}
+.lista li::before{content:"";position:absolute;left:0;top:12px;width:5px;height:5px;
+  border-radius:50%;background:var(--rosa)}
+.lista.no li::before{background:#AFC4C1}
+.lista.v li::before{background:var(--verde)}
+.lista.c li::before{background:var(--cian)}
+.itin{border-collapse:collapse;width:100%;font-size:13.5px}
+.itin td{padding:6px 0;border-bottom:1px solid var(--linea)}
+.itin td:last-child{text-align:right;color:var(--gris);white-space:nowrap}
+.itin tr:last-child td{border-bottom:none}
+.itin .fuerte td{font-weight:700;color:var(--magenta)}
+.edades{width:100%;border-collapse:collapse;font-size:13.5px}
+.edades td{padding:5px 0;border-bottom:1px dotted var(--linea)}
+.edades td:last-child{text-align:right;color:var(--gris)}
+.b-costo{border:2px solid var(--magenta);border-radius:6px;padding:14px 16px}
+.b-costo .t{font-family:'Questrial',sans-serif;color:var(--magenta);font-size:14.5px;
+  margin-bottom:6px}
+.b-costo p{font-size:13.5px;color:#22484E}
+.b-costo.gratis{border-color:var(--verde)}
+.upsell{border:2px dashed var(--verde);border-radius:6px;padding:14px 16px;background:#F3FAF5}
+.upsell .t{font-family:'Questrial',sans-serif;color:#2E7D52;font-size:14.5px;margin-bottom:6px}
+.upsell p{font-size:13.5px;color:#22484E}
+.b-costo.gratis .t{color:#2E7D52}
+.aviso{background:#FFF2EC;border:1px solid #FFD2C2;padding:11px 13px;border-radius:5px;
+  font-size:13.5px;margin-top:9px}
+.aviso b{color:var(--magenta)}
+.porvalidar{background:#FFF9F0;border:1px solid #F0D3A8;padding:11px 13px;border-radius:5px;
+  font-size:13.3px;margin-top:14px;color:#22484E}
+.porvalidar b{color:#B8690A}
+.b-fotos{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:6px}
+.foto{background:linear-gradient(135deg,#BFDFDB,#A6CFCA);display:flex;align-items:center;
+  justify-content:center;font-size:11.5px;color:#3F6E69;text-align:center;padding:8px;min-height:98px}
+.foto-real{position:relative;overflow:hidden;background:#E2EFED}
+.foto-real img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/3}
+.foto-real figcaption{position:absolute;left:0;right:0;bottom:0;
+  background:linear-gradient(transparent,rgba(3,42,50,.84));color:#fff;
+  font-size:11.5px;padding:16px 9px 7px;line-height:1.3}
+.nota-pie{font-size:12.5px;color:var(--gris);margin-top:7px}
+
+/* tarjetas de plan libre */
+.plan{border:1px solid var(--linea);border-left:4px solid var(--cian);padding:14px 16px;
+  margin-bottom:12px;background:#fff}
+.plan .ph{font-family:'Questrial',sans-serif;font-size:16px;margin-bottom:3px}
+.plan .pc{display:inline-block;font-size:11.5px;background:#E1F4F2;
+  color:#0E6C7A;padding:2px 8px;border-radius:20px;margin-bottom:7px}
+.plan .pc.pago{background:#FFF2EC;color:#D4552F}
+.plan p{font-size:13.8px;color:#22484E}
+
+@media(max-width:780px){
+  .b-body{grid-template-columns:1fr}
+  .b-main{border-right:none;border-bottom:1px solid var(--linea)}
+  .p-centro,.p-top,.p-pie,.indice{padding-left:24px;padding-right:24px}
+  .b-head,.b-main,.b-side{padding-left:22px;padding-right:22px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="revista">
+
+  <!-- PORTADA -->
+  <section class="portada" id="portada">
+    <div class="p-top">
+      <img class="marca-logo" src="img/02-4a35fba7.png" alt="Cancun100">
+      <div><span data-lang="es">Paquete armado · 3 parques</span><span data-lang="en" hidden>Ready-made package · 3 parks</span></div>
+    </div>
+    <div class="p-centro">
+      <div class="p-anio">5</div>
+      <h1 class="p-titulo"><span data-lang="es">Quiero ir a Xcaret sin romper el cochinito</span><span data-lang="en" hidden>Xcaret parks on budget</span></h1>
+      <div class="p-titulo-en"><span data-lang="es">Xcaret parks on budget</span><span data-lang="en" hidden>Quiero ir a Xcaret sin romper el cochinito</span></div>
+      <p class="p-bajada"><span data-lang="es">Los tres parques de Grupo Xcaret en cinco días, con transporte, comida y bebidas incluidas. <b>Ninguno de los tres cobra nada el día de la actividad.</b> Todos los paquetes son personalizables.</span><span data-lang="en" hidden>The three Grupo Xcaret parks in five days, with transport, food and drinks included. <b>None of the three charges anything on the day.</b> Every package can be customised.</span></p>
+      <div class="p-cifras">
+        <div class="cifra"><strong>5</strong><span><span data-lang="es">días</span><span data-lang="en" hidden>days</span></span></div>
+        <div class="cifra"><strong>3</strong><span><span data-lang="es">parques</span><span data-lang="en" hidden>parks</span></span></div>
+        <div class="cifra"><strong>$0</strong><span><span data-lang="es">cargos en sitio</span><span data-lang="en" hidden>charges on site</span></span></div>
+        <div class="cifra"><strong>2</strong><span><span data-lang="es">días libres</span><span data-lang="en" hidden>free days</span></span></div>
+      </div>
+    </div>
+    <svg class="ola" viewBox="0 0 1200 130" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,64 C160,116 360,8 610,46 C860,84 1050,22 1200,58 L1200,130 L0,130 Z" fill="rgba(255,255,255,.18)"/>
+      <path d="M0,86 C210,126 410,34 660,74 C910,114 1090,54 1200,88 L1200,130 L0,130 Z" fill="rgba(250,243,231,.42)"/>
+      <path d="M0,106 C240,136 470,66 720,98 C940,126 1100,84 1200,106 L1200,130 L0,130 Z" fill="#FAF3E7"/>
+    </svg>
+    <div class="p-pie">
+      <div>Xel-Há · Xcaret · Xplor Fuego · Cancún</div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <button class="btn-idioma" id="idiomaPortada">English</button>
+        <button class="btn-entrar" id="entrar"><span data-lang="es">Ver el itinerario</span><span data-lang="en" hidden>See the itinerary</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÍNDICE -->
+  <section class="indice" id="indice">
+    <button class="nb idioma" id="idiomaIdx" style="float:right;margin-top:6px">English</button>
+    <div class="idx-top"><img src="img/03-6c479c0a.png" alt="Cancun100"><h2 class="idx-h"><span data-lang="es">El itinerario, día por día</span><span data-lang="en" hidden>The itinerary, day by day</span></h2></div>
+    <p class="idx-sub"><span data-lang="es">Llega, descansa, y a partir del segundo día un parque diario, de menos a más largo. Los días 1 y 5 no llevan parque: son para llegar y para salir sin prisas. Toca cualquier día para ver la ficha completa.</span><span data-lang="en" hidden>Arrive, settle in, and from the second day one park a day, from the shortest to the longest. Days 1 and 5 carry no park: they are for arriving and leaving without rushing. Tap any day for the full sheet.</span></p>
+
+    <div class="personaliza">
+      <div class="t"><span data-lang="es">Este paquete es personalizable</span><span data-lang="en" hidden>This package can be customised</span></div>
+      <p><span data-lang="es">Es una propuesta armada, no un paquete cerrado. Se pueden <b>cambiar los tours</b>, <b>mover el orden de los días</b> o <b>agregar actividades</b> en los días libres, según lo que busque el cliente y los días que tenga. Preguntar al asesor qué conviene en cada caso.</span><span data-lang="en" hidden>It is a ready-made proposal, not a closed package. Tours can be <b>swapped</b>, the <b>order of the days moved</b> or <b>activities added</b> on the free days, depending on what the guest wants and how many days they have. Ask your advisor what works best in each case.</span></p>
+    </div>
+
+    <div class="alerta-dia">
+      <div class="t"><span data-lang="es">Antes de cotizar: temporada y día de llegada</span><span data-lang="en" hidden>Before quoting: season and arrival day</span></div>
+      <p><span data-lang="es"><b>Xplor Fuego no opera domingos</b>, ni siquiera en temporada alta. Como va en el día 4, el paquete no cuadra con <b>llegada en jueves</b>. Con esa llegada hay que mover Xplor Fuego al día 3.<br><br><b>Xcaret Plus y Xel-Há suben de precio en temporada alta</b> y tienen dos versiones en la lista: BAJA y TEMP ALTA. <b>Xplor Fuego no sube</b>: tiene una sola versión todo el año.</span><span data-lang="en" hidden><b>Xplor Fuego does not run on Sundays</b>, not even in high season. Since it falls on day 4, the package does not work with a <b>Thursday arrival</b>. With that arrival, Xplor Fuego has to move to day 3.<br><br><b>Xcaret Plus and Xel-Há go up in high season</b> and have two versions in the price list: BAJA and TEMP ALTA. <b>Xplor Fuego does not</b>: one version all year.</span></p>
+      <table>
+        <tr><td><span data-lang="es">30 de marzo al 12 de abril</span><span data-lang="en" hidden>30 March to 12 April</span></td><td><span data-lang="es">Temporada alta</span><span data-lang="en" hidden>High season</span></td></tr>
+        <tr><td><span data-lang="es">1 de julio al 15 de agosto</span><span data-lang="en" hidden>1 July to 15 August</span></td><td><span data-lang="es">Temporada alta</span><span data-lang="en" hidden>High season</span></td></tr>
+        <tr><td><span data-lang="es">26 al 31 de diciembre</span><span data-lang="en" hidden>26 to 31 December</span></td><td><span data-lang="es">Temporada alta</span><span data-lang="en" hidden>High season</span></td></tr>
+        <tr><td><span data-lang="es">Llegada en jueves</span><span data-lang="en" hidden>Thursday arrival</span></td><td><span data-lang="es">Reacomodar el orden</span><span data-lang="en" hidden>Reorder the days</span></td></tr>
+      </table>
+    </div>
+
+    <div class="resumen">
+      <h3><span data-lang="es">Lo que el cliente NO paga en el sitio</span><span data-lang="en" hidden>What the guest does NOT pay on site</span></h3>
+      <p><span data-lang="es">Es el argumento de venta de este paquete. <b>Los tres parques de Grupo Xcaret no cobran nada el día de la actividad</b>: ni muelle, ni impuesto, ni entrada aparte. La comida y las bebidas de los tres días ya van pagadas.</span><span data-lang="en" hidden>This is the selling point of the package. <b>The three Grupo Xcaret parks charge nothing on the day of the activity</b>: no pier fee, no tax, no separate entrance. Food and drinks for all three days are already paid for.</span></p>
+      <table>
+        <tr><th><span data-lang="es">Día</span><span data-lang="en" hidden>Day</span></th><th><span data-lang="es">Parque</span><span data-lang="en" hidden>Park</span></th><th><span data-lang="es">Se paga en sitio</span><span data-lang="en" hidden>Paid on site</span></th></tr>
+        <tr><td><span data-lang="es">Día 2</span><span data-lang="en" hidden>Day 2</span></td><td>Xel-Há</td><td>$0</td></tr>
+        <tr><td><span data-lang="es">Día 3</span><span data-lang="en" hidden>Day 3</span></td><td>Xcaret Plus</td><td>$0</td></tr>
+        <tr><td><span data-lang="es">Día 4</span><span data-lang="en" hidden>Day 4</span></td><td>Xplor Fuego</td><td>$0</td></tr>
+        <tr class="tot"><td><span data-lang="es">Total</span><span data-lang="en" hidden>Total</span></td><td><span data-lang="es">Los tres parques</span><span data-lang="en" hidden>All three parks</span></td><td>$0</td></tr>
+      </table>
+      <p style="margin-top:12px;font-size:13px;color:var(--gris)"><span data-lang="es">Lo único que el cliente paga aparte son <b>fotografías, souvenirs y propinas</b>, y son opcionales. Compárese con un paquete de tours normales, donde entre muelles e impuestos se van entre 500 y 600 pesos por persona.</span><span data-lang="en" hidden>The only things the guest pays for separately are <b>photographs, souvenirs and tips</b>, and they are optional. Compare that with a standard tour package, where pier fees and taxes alone come to 500–600 pesos per person.</span></p>
+    </div>
+
+    <div class="idx-grid" id="idxGrid"></div>
+  </section>
+
+  <!-- FICHA -->
+  <section class="ficha-wrap" id="fichaWrap">
+    <div class="nav">
+      <div class="nav-marca"><img src="img/03-6c479c0a.png" alt="Cancun100"><button class="nb" id="volver">Itinerario</button></div>
+      <div class="cont" id="contador"></div>
+      <div class="nav-btns">
+        <button class="nb idioma" id="idiomaNav">English</button>
+        <button class="nb" id="prev">Anterior</button>
+        <button class="nb" id="next">Siguiente</button>
+      </div>
+    </div>
+    <div id="ficha"></div>
+  </section>
+
+</div>
+
+<script>
+const DIAS_ES = [{"dia": "Día 1", "tipo": "libre", "nombre": "Llegada y primer atardecer", "prov": "Por su cuenta · no incluido en el paquete", "cod": "LIBRE", "sub": "El día de llegada no lleva parque. Alcanza para acomodarse, comer barato y descansar, que los tres días siguientes son largos.", "pills": ["Sin tour", "Traslado del aeropuerto", "Tarde libre"], "desc": "El vuelo, el traslado y el check-in se llevan buena parte del día. Lo que queda de tarde da para conocer la zona sin gastar. Conviene dormir temprano: el parque del día siguiente tiene pick-up a las 7:00 de la mañana.", "hotel": {"t": "El hotel", "p": ["El paquete incluye hospedaje en un hotel a la <b>entrada de la Zona Hotelera</b>, a unos <b>15 minutos de la playa</b>. Queda cerca de los puntos de salida de los tours y también del centro, donde está la comida más barata de la ciudad.", "<b>El hospedaje es solo habitación, y es a propósito.</b> Los restaurantes de hotel abren a las 7:00 de la mañana para desayunar, y esa es justo la hora del pick-up de Xel-Há y de Xcaret: el cliente pagaría un desayuno que no alcanza a tomar. Se deja a su elección agregarlo al llegar.", "<b>Los tres parques incluyen comida.</b> Xel-Há trae desayuno, comida buffet y barra libre; Xcaret Plus, buffet con una cerveza; Xplor Fuego, cena de costillitas. Eso deja el gasto en comida reducido a los dos días libres, que es de donde sale el ahorro del paquete."]}, "planes": [{"t": "Playa Delfines y el mirador", "c": "Gratis", "p": "La playa pública más grande de la Zona Hotelera y la única con estacionamiento libre. Ahí están las letras de Cancún. Está en el kilómetro 18, del lado del mar abierto."}, {"t": "Playa Caracol o Playa Langosta", "c": "Gratis", "p": "Del lado de la laguna, con agua tranquila y poco oleaje. Mejores para meterse al agua que Delfines, que tiene mar abierto."}, {"t": "Cena en el Parque Las Palapas", "c": "Económico", "p": "En el centro de Cancún, a unos 20 minutos de la Zona Hotelera. Antojitos, marquesitas y comida corrida a precio local."}, {"t": "Mercado 28", "c": "Económico", "p": "Artesanías, souvenirs y fondas. Conviene ir el primer día para ver precios con calma, porque los otros tres días se van completos en los parques."}], "llevar": ["Efectivo en pesos para el transporte público y la cena", "Bloqueador con óxido de titanio y óxido de zinc, que es el único que dejan entrar a los parques", "Ropa ligera y algo para el sol", "Copia digital del voucher de los tres parques"], "tips": ["El camión R1 y R2 recorre toda la Zona Hotelera y cuesta una fracción de lo que cobra un taxi", "Los taxis en Cancún no llevan taxímetro: preguntar el precio antes de subir", "Comprar el bloqueador permitido antes del primer parque: en taquilla cuesta bastante más"], "upsell": [{"t": "Nota para la agencia", "p": "<b>Este día se le puede agregar un tour.</b> Tenemos opciones que <b>empiezan por la tarde o por la noche</b>, para el cliente que llega temprano y no quiere perder el día. Preguntar al asesor qué opciones se recomiendan según la hora de llegada."}, {"t": "Upgrade de hotel", "p": "Hay <b>dos hoteles</b> para subir de categoría, según disponibilidad: uno <b>pie de playa</b> y otro <b>dentro de la Zona Hotelera</b>. Los dos manejan el mismo concepto de <b>solo hospedaje</b>, por la misma razón de los horarios de pick-up. Preguntar al asesor cuál hay disponible para las fechas del cliente."}]}, {"dia": "Día 2", "tipo": "tour", "nombre": "Xel-Há", "prov": "Experiencias Xcaret Parques (XPX)", "cod": "XPX", "skus": ["Tour Xelha BAJA PAK", "Tour Xelha TEMP ALTA PAK"], "skuNota": "Son <b>dos versiones del mismo tour</b>: el contenido es idéntico, solo cambia el precio. Elegir según la <b>fecha de viaje</b> del cliente, no la de la reserva.", "sub": "La caleta natural más grande de la Riviera Maya, con snorkel ilimitado, todo el día de comida y barra libre.", "pills": ["Todos los días", "Pick-up 7:00 a.m.", "Regreso 7:30 p.m.", "Todas las edades"], "desc": "Es el mejor parque para empezar: no exige condición física, no tiene edad mínima y el regreso es temprano comparado con los otros dos. Todo lo que se come y se bebe adentro va incluido, incluida la barra libre, así que el cliente no saca la cartera en todo el día.", "itinerario": [["Pick-up en el hotel", "desde 7:00 a.m."], ["Desayuno continental", "9:30 a 11:30 a.m."], ["Snorkel ilimitado en la caleta", "todo el día", true], ["Comida buffet y snacks", "11:30 a.m. a 5:30 p.m."], ["Faro Mirador y tobogán", "—"], ["Regreso al hotel", "7:30 p.m. aprox."]], "incluye": ["Transporte redondo desde el hotel", "Snorkel ilimitado en la caleta, con aletas y visor de tubo integrado", "Paseo en llanta por el río", "Faro Mirador con vista de 360° a 40 metros y descenso en tobogán", "Desayuno continental, snacks y comida buffet", "Bebidas sin alcohol ilimitadas y barra libre doméstica", "Mundo de Aventura: cuerdas, tirolesas y saltos desde 5 metros", "Cenotes, cuevas y grutas · Meliponario y vivero · Mundo de los Niños", "Chalecos, llantas flotantes y bicicletas", "Casilleros, regaderas, vestidores y una toalla"], "noIncluye": ["Fotografías", "Souvenirs", "Propinas"], "edades": [["Todas las edades", "Sin edad mínima"], ["Niños de más de 1.40 m", "Deben presentar identificación"]], "edadNota": "En los parques de Grupo Xcaret, los niños de más de 1.40 metros deben presentar identificación para comprobar su edad. Sin ella se les cobra tarifa de adulto en taquilla. Sirve CURP, credencial escolar con fotografía o carnet de vacunación, siempre en original.", "llevar": ["Traje de baño y zapatos para agua", "Cambio de ropa extra y una toalla, aunque el parque da una", "Bloqueador, repelente y bronceador <b>solo con óxido de titanio y óxido de zinc</b>", "Efectivo o tarjeta para recuerdos"], "cargo": {"t": "Sin cargos en el sitio", "p": "Este parque <b>no cobra nada adicional el día de la actividad</b>. Ni muelle, ni impuesto, ni entrada aparte. Todo lo que se come y se bebe adentro ya está pagado."}, "aviso": "El bloqueador es la queja más frecuente de los parques de Grupo Xcaret: <b>solo permiten los que llevan óxido de titanio y óxido de zinc</b>. El que no cumple se queda en el casillero y hay que comprar el del parque, que es caro. Decirlo al vender y de nuevo al confirmar.", "fotos": [{"cap": "Faro Mirador y la caleta", "src": "img/04-d980eb12.jpg"}, {"cap": "Paseo en llanta por el río", "src": "img/05-65bffcca.jpg"}, {"cap": "Comida incluida todo el día", "src": "img/06-1c4da221.jpg"}]}, {"dia": "Día 3", "tipo": "tour", "nombre": "Xcaret Plus", "prov": "Experiencias Xcaret Parques (XPX)", "cod": "XPX", "skus": ["XCARET Plus TOUR BAJA PAK", "XCARET Plus TOUR TEMP ALTA PAK"], "skuNota": "Son <b>dos versiones del mismo tour</b>: el contenido es idéntico, solo cambia el precio. Elegir según la <b>fecha de viaje</b> del cliente.", "sub": "Más de veinte actividades, ríos subterráneos y el espectáculo Xcaret México Espectacular para cerrar la noche.", "pills": ["Todos los días", "Pick-up 7:00 a.m.", "Regreso 10:30 p.m.", "Todas las edades"], "desc": "Es el día más completo del paquete y también el más largo: quince horas y media entre el pick-up y el regreso. La versión Plus agrega el área privada con vestidores y casilleros, y el buffet con una cerveza por adulto. Termina con Xcaret México Espectacular, que es el cierre natural del viaje.", "itinerario": [["Pick-up en el hotel", "desde 7:00 a.m."], ["Ríos subterráneos, playa, caleta y pozas", "—"], ["Comida buffet en el área Plus", "—"], ["Acuario, mariposario y aviario", "—"], ["Espectáculo ecuestre y Voladores de Papantla", "—"], ["Xcaret México Espectacular", "noche", true], ["Regreso al hotel", "10:30 p.m. aprox."]], "incluye": ["Transporte redondo desde el hotel", "Acceso al Área Plus: vestidores, baños y casilleros privados", "Comida buffet con café y aguas frescas ilimitadas, más una cerveza por adulto", "Recorrido en tres ríos subterráneos, con bolsa de seguridad", "Presentación de Xcaret México Espectacular", "Playa, caleta y pozas naturales", "Acuario de Arrecife Coral, mariposario y aviario", "Mundo de Niños, espacio exclusivo para los más pequeños", "Espectáculo ecuestre, Voladores de Papantla y danzas prehispánicas", "Aletas y visor de snorkel para la caleta, chalecos y llantas flotantes"], "noIncluye": ["Fotografías", "Souvenirs", "Actividades opcionales", "Propinas"], "edades": [["Todas las edades", "Sin edad mínima"], ["Niños de más de 1.40 m", "Deben presentar identificación"]], "edadNota": "Misma regla de identificación que en Xel-Há. Para extranjeros el <b>pasaporte vigente es el único documento válido</b>; para mexicanos sirve INE, FM2/FM3 o pasaporte. Siempre en original, nunca digital.", "llevar": ["Ropa cómoda de playa y traje de baño", "Toalla y una muda de ropa extra", "Bloqueador o bronceador <b>únicamente con óxido de titanio y óxido de zinc</b>", "Efectivo o tarjeta para souvenirs y fotografías", "Algo abrigador para el espectáculo de la noche"], "cargo": {"t": "Sin cargos en el sitio", "p": "Este parque <b>no cobra nada adicional el día de la actividad</b>. La comida, la cerveza del adulto y el espectáculo de la noche ya van incluidos."}, "aviso": "<b>Son quince horas y media.</b> Conviene decirlo tal cual al vender: el pick-up es a las 7:00 de la mañana y el regreso al hotel alrededor de las 10:30 de la noche, porque el espectáculo termina a las 10. Para familias con niños muy chicos, vale la pena mencionar que se puede salir antes por cuenta propia.", "fotos": [{"cap": "La caleta y el río", "src": "img/07-38e0808a.jpg"}, {"cap": "Xcaret México Espectacular", "src": "img/08-2fe85df1.jpg"}, {"cap": "Danzas prehispánicas", "src": "img/09-434a560b.jpg"}]}, {"dia": "Día 4", "tipo": "tour", "nombre": "Xplor Fuego", "prov": "Experiencias Xcaret Parques (XPX)", "cod": "XPX", "skus": ["Tour Xplor Fuego PAK"], "skuNota": "<b>No opera domingos</b>, ni siquiera en temporada alta. Es el único parque de Grupo Xcaret que cierra los siete domingos de apertura.", "sub": "El mismo parque de aventura, pero de noche: tirolesas iluminadas, ríos de estalactitas y cena de costillitas.", "pills": ["Lunes a sábado", "Pick-up 2:30 p.m.", "Regreso 11:30 p.m.", "Desde 5 años"], "desc": "Cierra el paquete con lo único que no se puede hacer de día: recorrer la selva y las cavernas iluminadas. El pick-up es a las 2:30 de la tarde, así que la mañana queda libre para descansar del día anterior o para ir a la playa.", "itinerario": [["Mañana libre", "—"], ["Pick-up en el hotel", "desde 2:30 p.m."], ["Circuito de siete tirolesas", "atardecer", true], ["Vehículo anfibio, 5 km por la selva", "—"], ["Río de estalactitas, 400 m a nado", "—"], ["Balsa remando por 570 m de cavernas", "—"], ["Cena buffet de costillitas", "—"], ["Regreso al hotel", "11:30 p.m. aprox."]], "incluye": ["Transporte redondo desde el hotel", "Un circuito de siete tirolesas, incluida la más alta de la Riviera Maya", "Recorrido de 5 km por la selva en vehículos anfibios", "Ingreso al Toboganxote", "Nado de 400 metros en río de estalactitas", "Recorrido en balsa remando con las manos, 570 metros de cavernas subterráneas", "Hamacuatizaje y caminata por cavernas", "Cena buffet de costillitas, con opciones para vegetarianos", "Bebidas sin alcohol ilimitadas: café, atole, champurrado y aguas frescas", "Casillero para dos personas"], "noIncluye": ["Fotografías", "Souvenirs", "Propinas"], "edades": [["Menores de 5 años", "No pueden entrar"], ["Desde 5 años", "Tarifa según estatura y peso por actividad"]], "edadNota": "<b>Edad mínima 5 años.</b> Además cada actividad tiene su propio límite: tirolesas desde 1.10 m y de 40 a 136 kg · <b>Toboganxote desde 1.30 m y hay que saber nadar</b> · anfibios y expedición subterránea desde 1.10 m · balsas y río de estalactitas desde 1.00 m. Si el arnés no ajusta, el niño no puede hacer la actividad.", "llevar": ["Traje de baño y repelente de insectos", "Muda de ropa extra y toalla", "<b>Calzado cerrado o para agua: es obligatorio</b>, sin él no hay acceso a las actividades", "Ropa abrigadora para el regreso, que es de noche", "Bloqueador <b>solo con óxido de titanio y óxido de zinc</b>"], "cargo": {"t": "Sin cargos en el sitio", "p": "Este parque <b>no cobra nada adicional el día de la actividad</b>. La cena y las bebidas van incluidas."}, "aviso": "<b>No es apto para todos.</b> Algunas actividades no se recomiendan a embarazadas, ni con problemas cardíacos, miedo a las alturas, cirugía reciente, dolor de espalda o mareo fácil. Y <b>solo se permiten cámaras sujetas al casco</b>: nada de celular en la mano.", "upsell": {"t": "Nota para la agencia", "p": "El regreso es a las <b>11:30 de la noche</b>, la víspera del vuelo. <b>Este paquete no funciona con vuelo de salida temprano.</b> Si el cliente vuela por la mañana del día 5, hay que mover Xplor Fuego al día 3 y Xcaret Plus al día 4."}, "fotos": [{"cap": "Tirolesa al atardecer", "src": "img/10-d4f35291.jpg"}, {"cap": "Río de estalactitas iluminado", "src": "img/11-67f4cfea.jpg"}, {"cap": "Hamacuatizaje nocturno", "src": "img/12-a0f649d8.jpg"}]}, {"dia": "Día 5", "tipo": "libre", "nombre": "Última mañana y salida", "prov": "Por su cuenta · no incluido en el paquete", "cod": "LIBRE", "sub": "Sin parque, para que nadie pierda un vuelo después de tres días largos seguidos.", "pills": ["Sin tour", "Check-out", "Traslado al aeropuerto"], "desc": "El último día se deja libre a propósito. Después de tres parques seguidos —y del regreso a las 11:30 de la noche— nadie quiere madrugar. La mayoría de los hoteles guarda el equipaje después del check-out sin costo, así que la mañana queda aprovechable.", "planes": [{"t": "Dormir hasta tarde", "c": "Gratis", "p": "Suena a broma pero es el mejor consejo del día. Tres parques seguidos, con regresos a las 7:30, 10:30 y 11:30 de la noche, dejan a cualquiera molido."}, {"t": "Playa Caracol antes del calor", "c": "Gratis", "p": "Agua tranquila y del lado protegido. La mejor opción para un último chapuzón sin alejarse del hotel."}, {"t": "Mercado 28 para lo que faltó", "c": "Económico", "p": "Es donde se compran los souvenirs de verdad. Regatear es normal y esperado: el primer precio nunca es el precio."}, {"t": "Traslado al aeropuerto", "c": "Se cotiza aparte", "p": "Calcular llegar 3 horas antes para vuelo internacional y 2 para nacional. Desde la Zona Hotelera el trayecto es de 20 a 40 minutos según el tráfico."}], "llevar": ["Pasaporte o identificación a la mano, no en la maleta documentada", "Efectivo en pesos para el desayuno y el mercado", "Una bolsa aparte para lo mojado y para la ropa de los parques"], "tips": ["Guardar el equipaje en el hotel después del check-out casi siempre es gratis: preguntar en recepción", "Los souvenirs del aeropuerto cuestan el triple que en el Mercado 28", "<b>El vuelo de este día no debe ser temprano</b>: la noche anterior se regresa a las 11:30"], "upsell": [{"t": "Nota para la agencia", "p": "<b>Este día también se le puede agregar un tour.</b> Contamos con <b>tours cortos de medio día</b> para que el cliente haga una última actividad y alcance su vuelo de regreso. Preguntar al asesor qué opciones se recomiendan según la hora del vuelo."}]}];
+const DIAS_EN = [{"dia": "Day 1", "tipo": "libre", "nombre": "Arrival and first sunset", "prov": "On their own · not included in the package", "cod": "FREE", "sub": "The arrival day carries no park. There is time to settle in, eat cheap and rest, because the next three days are long ones.", "pills": ["No tour", "Airport transfer", "Free afternoon"], "desc": "The flight, the transfer and check-in take up most of the day. What is left of the afternoon is enough to get to know the area without spending. An early night is a good idea: the next day's park has a 7:00 a.m. pick-up.", "hotel": {"t": "The hotel", "p": ["The package includes accommodation at a hotel at the <b>entrance of the Hotel Zone</b>, about <b>15 minutes from the beach</b>. It is close to the tour departure points and also to downtown, where the cheapest food in the city is.", "<b>The stay is room only, and that is on purpose.</b> Hotel restaurants open at 7:00 a.m. for breakfast, and that is exactly the pick-up time for Xel-Há and Xcaret: the guest would pay for a breakfast they cannot eat. We leave it up to them to add it on arrival.", "<b>All three parks include food.</b> Xel-Há comes with breakfast, buffet lunch and an open bar; Xcaret Plus, a buffet with one beer; Xplor Fuego, a rib dinner. That leaves food spending down to the two free days, which is where the savings in this package come from."]}, "planes": [{"t": "Playa Delfines and the lookout", "c": "Free", "p": "The largest public beach in the Hotel Zone and the only one with free parking. The Cancún letters are there. It is at kilometer 18, on the open sea side."}, {"t": "Playa Caracol or Playa Langosta", "c": "Free", "p": "On the lagoon side, with calm water and little surf. Better for swimming than Delfines, which faces the open sea."}, {"t": "Dinner at Parque Las Palapas", "c": "Cheap", "p": "In downtown Cancún, about 20 minutes from the Hotel Zone. Mexican street food, marquesitas and set menus at local prices."}, {"t": "Mercado 28", "c": "Cheap", "p": "Crafts, souvenirs and food stalls. Worth going on the first day, because the other three days are taken up entirely by the parks."}], "llevar": ["Cash in pesos for public transport and dinner", "Sunscreen with titanium oxide and zinc oxide, the only kind allowed inside the parks", "Light clothing and something for the sun", "A digital copy of the vouchers for the three parks"], "tips": ["The R1 and R2 buses run the whole Hotel Zone and cost a fraction of a taxi", "Taxis in Cancún have no meter: agree the price before getting in", "Buy the approved sunscreen before the first park: at the counter it costs considerably more"], "upsell": [{"t": "Note for the agency", "p": "<b>A tour can be added to this day.</b> We have options that <b>start in the afternoon or at night</b>, for the guest who arrives early and does not want to lose the day. Ask your advisor which options work best for their arrival time."}, {"t": "Hotel upgrade", "p": "There are <b>two hotels</b> to move up a category, subject to availability: one <b>right on the beach</b> and another <b>inside the Hotel Zone</b>. Both work on the same <b>room only</b> basis, for the same reason of pick-up times. Ask your advisor which one is available for the guest's dates."}]}, {"dia": "Day 2", "tipo": "tour", "nombre": "Xel-Há", "prov": "Experiencias Xcaret Parques (XPX)", "cod": "XPX", "skus": ["Tour Xelha BAJA PAK", "Tour Xelha TEMP ALTA PAK"], "skuNota": "These are <b>two versions of the same tour</b>: the content is identical, only the price changes. Choose according to the guest's <b>travel date</b>, not the booking date.", "sub": "The largest natural inlet in the Riviera Maya, with unlimited snorkeling, food all day and an open bar.", "pills": ["Every day", "7:00 a.m. pick-up", "7:30 p.m. return", "All ages"], "desc": "It is the best park to start with: it demands no fitness, has no minimum age and returns earlier than the other two. Everything eaten and drunk inside is included, open bar as well, so the guest does not take out their wallet all day.", "itinerario": [["Pick-up at the hotel", "from 7:00 a.m."], ["Continental breakfast", "9:30 to 11:30 a.m."], ["Unlimited snorkeling in the inlet", "all day", true], ["Buffet lunch and snacks", "11:30 a.m. to 5:30 p.m."], ["Faro Mirador and slide", "—"], ["Return to the hotel", "around 7:30 p.m."]], "incluye": ["Round-trip transport from the hotel", "Unlimited snorkeling in the inlet, with fins and a mask with integrated snorkel", "Inner-tube ride down the river", "Faro Mirador with 360° views from 40 metres and a slide descent", "Continental breakfast, snacks and buffet lunch", "Unlimited soft drinks and domestic open bar", "Adventure World: ropes, zip lines and jumps from 5 metres", "Cenotes, caves and grottoes · Meliponary and nursery · Children's World", "Life jackets, floating tubes and bicycles", "Lockers, showers, changing rooms and one towel"], "noIncluye": ["Photographs", "Souvenirs", "Tips"], "edades": [["All ages", "No minimum age"], ["Children over 1.40 m", "Must show ID"]], "edadNota": "In Grupo Xcaret parks, children over 1.40 metres must show ID to prove their age. Without it they are charged the adult rate at the counter. A CURP, a school ID with photo or a vaccination card works, always the original.", "llevar": ["Swimsuit and water shoes", "An extra change of clothes and a towel, although the park provides one", "Sunscreen, repellent and tanning lotion <b>with titanium oxide and zinc oxide only</b>", "Cash or card for souvenirs"], "cargo": {"t": "No charges on site", "p": "This park <b>charges nothing extra on the day of the activity</b>. No pier fee, no tax, no separate entrance. Everything eaten and drunk inside is already paid for."}, "aviso": "Sunscreen is the most frequent complaint at Grupo Xcaret parks: <b>only those with titanium oxide and zinc oxide are allowed</b>. Anything else stays in the locker and the park's own has to be bought, which is expensive. Say it when selling and again when confirming.", "fotos": [{"cap": "Faro Mirador and the inlet", "src": "img/04-d980eb12.jpg"}, {"cap": "Inner-tube ride down the river", "src": "img/05-65bffcca.jpg"}, {"cap": "Food included all day", "src": "img/06-1c4da221.jpg"}]}, {"dia": "Day 3", "tipo": "tour", "nombre": "Xcaret Plus", "prov": "Experiencias Xcaret Parques (XPX)", "cod": "XPX", "skus": ["XCARET Plus TOUR BAJA PAK", "XCARET Plus TOUR TEMP ALTA PAK"], "skuNota": "These are <b>two versions of the same tour</b>: the content is identical, only the price changes. Choose according to the guest's <b>travel date</b>.", "sub": "More than twenty activities, underground rivers and the Xcaret México Espectacular show to close the night.", "pills": ["Every day", "7:00 a.m. pick-up", "10:30 p.m. return", "All ages"], "desc": "It is the fullest day of the package and also the longest: fifteen and a half hours between pick-up and return. The Plus version adds the private area with changing rooms and lockers, and the buffet with one beer per adult. It ends with Xcaret México Espectacular, the natural close to the trip.", "itinerario": [["Pick-up at the hotel", "from 7:00 a.m."], ["Underground rivers, beach, inlet and natural pools", "—"], ["Buffet lunch in the Plus area", "—"], ["Aquarium, butterfly pavilion and aviary", "—"], ["Equestrian show and Voladores de Papantla", "—"], ["Xcaret México Espectacular", "evening", true], ["Return to the hotel", "around 10:30 p.m."]], "incluye": ["Round-trip transport from the hotel", "Access to the Plus Area: changing rooms, bathrooms and private lockers", "Buffet lunch with unlimited coffee and flavoured water, plus one beer per adult", "Three underground rivers, with a safety bag", "Xcaret México Espectacular performance", "Beach, inlet and natural pools", "Coral Reef Aquarium, butterfly pavilion and aviary", "Children's World, an area just for the youngest", "Equestrian show, Voladores de Papantla and pre-Hispanic dances", "Fins and snorkel mask for the inlet, life jackets and floating tubes"], "noIncluye": ["Photographs", "Souvenirs", "Optional activities", "Tips"], "edades": [["All ages", "No minimum age"], ["Children over 1.40 m", "Must show ID"]], "edadNota": "Same ID rule as Xel-Há. For foreigners a <b>valid passport is the only accepted document</b>; Mexicans may use an INE, FM2/FM3 or passport. Always the original, never a photo.", "llevar": ["Comfortable beach clothes and a swimsuit", "Towel and an extra change of clothes", "Sunscreen or tanning lotion <b>with titanium oxide and zinc oxide only</b>", "Cash or card for souvenirs and photographs", "Something warm for the evening show"], "cargo": {"t": "No charges on site", "p": "This park <b>charges nothing extra on the day of the activity</b>. The meal, the adult's beer and the evening show are already included."}, "aviso": "<b>It is fifteen and a half hours.</b> Worth saying exactly that when selling: pick-up at 7:00 a.m. and return to the hotel around 10:30 p.m., because the show ends at 10. For families with very young children, it is worth mentioning they can leave earlier on their own.", "fotos": [{"cap": "The inlet and the river", "src": "img/07-38e0808a.jpg"}, {"cap": "Xcaret México Espectacular", "src": "img/08-2fe85df1.jpg"}, {"cap": "Pre-Hispanic dances", "src": "img/09-434a560b.jpg"}]}, {"dia": "Day 4", "tipo": "tour", "nombre": "Xplor Fuego", "prov": "Experiencias Xcaret Parques (XPX)", "cod": "XPX", "skus": ["Tour Xplor Fuego PAK"], "skuNota": "<b>It does not run on Sundays</b>, not even in high season. It is the only Grupo Xcaret park that closes on all seven high-season Sundays.", "sub": "The same adventure park, but at night: lit zip lines, stalactite rivers and a rib dinner.", "pills": ["Monday to Saturday", "2:30 p.m. pick-up", "11:30 p.m. return", "From age 5"], "desc": "It closes the package with the one thing that cannot be done by day: crossing the jungle and the caverns lit up. Pick-up is at 2:30 in the afternoon, so the morning stays free to recover from the day before or to go to the beach.", "itinerario": [["Free morning", "—"], ["Pick-up at the hotel", "from 2:30 p.m."], ["Circuit of seven zip lines", "at sunset", true], ["Amphibious vehicle, 5 km through the jungle", "—"], ["Stalactite river, 400 m swim", "—"], ["Raft paddling through 570 m of caverns", "—"], ["Rib buffet dinner", "—"], ["Return to the hotel", "around 11:30 p.m."]], "incluye": ["Round-trip transport from the hotel", "One circuit of seven zip lines, including the highest in the Riviera Maya", "5 km through the jungle in amphibious vehicles", "Access to the Toboganxote", "400-metre swim in a stalactite river", "Raft ride paddling by hand, 570 metres of underground caverns", "Hammock splash and cavern walk", "Rib buffet dinner, with vegetarian options", "Unlimited soft drinks: coffee, atole, champurrado and flavoured water", "Locker for two people"], "noIncluye": ["Photographs", "Souvenirs", "Tips"], "edades": [["Under 5", "Cannot enter"], ["From age 5", "Subject to height and weight per activity"]], "edadNota": "<b>Minimum age 5.</b> Each activity also has its own limit: zip lines from 1.10 m and 40 to 136 kg · <b>Toboganxote from 1.30 m and you must be able to swim</b> · amphibious vehicles and underground expedition from 1.10 m · rafts and stalactite river from 1.00 m. If the harness does not fit, the child cannot do the activity.", "llevar": ["Swimsuit and insect repellent", "Extra change of clothes and a towel", "<b>Closed or water shoes: mandatory</b>, without them there is no access to the activities", "Warm clothing for the ride back, which is at night", "Sunscreen <b>with titanium oxide and zinc oxide only</b>"], "cargo": {"t": "No charges on site", "p": "This park <b>charges nothing extra on the day of the activity</b>. Dinner and drinks are included."}, "aviso": "<b>It is not for everyone.</b> Some activities are not recommended for pregnant women, or with heart conditions, fear of heights, recent surgery, back pain or motion sickness. And <b>only helmet-mounted cameras are allowed</b>: no phone in hand.", "upsell": {"t": "Note for the agency", "p": "The return is at <b>11:30 p.m.</b>, the night before the flight. <b>This package does not work with an early departure.</b> If the guest flies out on the morning of day 5, Xplor Fuego has to move to day 3 and Xcaret Plus to day 4."}, "fotos": [{"cap": "Zip line at sunset", "src": "img/10-d4f35291.jpg"}, {"cap": "Lit stalactite river", "src": "img/11-67f4cfea.jpg"}, {"cap": "Night hammock splash", "src": "img/12-a0f649d8.jpg"}]}, {"dia": "Day 5", "tipo": "libre", "nombre": "Last morning and departure", "prov": "On their own · not included in the package", "cod": "FREE", "sub": "No park, so nobody misses a flight after three long days in a row.", "pills": ["No tour", "Check-out", "Airport transfer"], "desc": "The last day is deliberately left free. After three parks in a row — and an 11:30 p.m. return — nobody wants an early start. Most hotels store luggage after check-out at no cost, so the morning stays usable.", "planes": [{"t": "Sleep in", "c": "Free", "p": "It sounds like a joke but it is the best advice of the day. Three parks in a row, returning at 7:30, 10:30 and 11:30 at night, leave anyone worn out."}, {"t": "Playa Caracol before it gets hot", "c": "Free", "p": "Calm water on the sheltered side. The best option for one last swim without going far from the hotel."}, {"t": "Mercado 28 for whatever is missing", "c": "Cheap", "p": "This is where the real souvenirs are bought. Haggling is normal and expected: the first price is never the price."}, {"t": "Transfer to the airport", "c": "Quoted separately", "p": "Plan to arrive 3 hours early for an international flight and 2 for a domestic one. From the Hotel Zone the ride is 20 to 40 minutes depending on traffic."}], "llevar": ["Passport or ID at hand, not in checked luggage", "Cash in pesos for breakfast and the market", "A separate bag for wet items and for the park clothes"], "tips": ["Storing luggage at the hotel after check-out is almost always free: ask at reception", "Airport souvenirs cost three times what they cost at Mercado 28", "<b>This day's flight must not be early</b>: the night before ends at 11:30 p.m."], "upsell": [{"t": "Note for the agency", "p": "<b>A tour can be added to this day too.</b> We have <b>short half-day tours</b> so the guest can fit in one last activity and still catch their flight home. Ask your advisor which options work best for their flight time."}]}];
+
+const LABELS={
+ es:{itinerario:"Itinerario",prev:"Anterior",next:"Siguiente",de:"de",
+  localizar:"Cómo localizarlo en la lista de precios",
+  sinProducto:"Este día no lleva producto del catálogo",
+  sinProductoNota:'Las sugerencias de abajo son <b>por cuenta del cliente</b> y no forman parte del paquete. Sirven para que el asesor pueda responder "¿y qué hago ese día?".',
+  recorrido:"Cómo se recorre el día",incluye:"Incluye",noIncluye:"No incluye",
+  edades:"Edades",llevar:"Qué llevar",antes:"Antes de vender",porValidar:"Por validar",
+  nacional:"Tarifa nacional",queHacer:"Qué se puede hacer",decirle:"Para decirle al cliente",
+  sinCosto:"Sin costo para la agencia",
+  sinCostoP:"Tal como está armado, este día no consume ningún producto del catálogo. Todo lo de arriba lo paga el cliente por su cuenta y sirve como valor agregado de la asesoría.",
+  btn:"English"},
+ en:{itinerario:"Itinerary",prev:"Previous",next:"Next",de:"of",
+  localizar:"How to find it in the price list",
+  sinProducto:"This day carries no catalogue product",
+  sinProductoNota:'The suggestions below are <b>at the guest\'s own expense</b> and are not part of the package. They are there so the advisor can answer "and what do I do that day?".',
+  recorrido:"How the day runs",incluye:"Included",noIncluye:"Not included",
+  edades:"Ages",llevar:"What to bring",antes:"Before selling",porValidar:"To be confirmed",
+  nacional:"Mexican national rate",queHacer:"What they can do",decirle:"To tell the guest",
+  sinCosto:"No cost to the agency",
+  sinCostoP:"As it is built, this day uses no catalogue product. Everything above is paid by the guest and works as added value from the advisor.",
+  btn:"Español"}
+};
+let LANG="es";
+let DIAS = DIAS_ES;
+const L = ()=>LABELS[LANG];
+
+const $ = s=>document.querySelector(s);
+const portada=$("#portada"), indice=$("#indice"), wrap=$("#fichaWrap");
+let actual=0;
+
+function pintarIndice(){
+  $("#idxGrid").innerHTML = DIAS.map((t,i)=>
+    `<button class="idx-card ${t.tipo==='libre'?'libre':''}" data-i="${i}">
+      <div class="dia-badge">${t.dia}</div>
+      <div class="t">${t.nombre}</div>
+      <div class="d">${t.pills[0]} · ${t.pills[1]}</div>
+      <div class="n" style="margin-top:6px"><span class="cod-mini">${t.cod}</span>${t.prov}</div>
+      ${(t.skus||[]).map(k=>`<div class="sku-mini">${k}</div>`).join("")}
+    </button>`).join("");
+  document.querySelectorAll(".idx-card").forEach(b=>b.onclick=()=>verFicha(+b.dataset.i));
+}
+pintarIndice();
+
+function li(arr,cls=""){return `<ul class="lista ${cls}">${arr.map(x=>`<li>${x}</li>`).join("")}</ul>`}
+
+function render(i){
+  const t=DIAS[i]; actual=i;
+  const esLibre = t.tipo==="libre";
+
+  const cabeza=`
+  <div class="b-head ${esLibre?'libre':''}">
+    <div class="b-dia">${t.dia}</div>
+    <div class="b-title">${t.nombre}</div>
+    <div class="b-sub">${t.sub}</div>
+    <div class="b-pills">${t.pills.map(p=>`<div class="pill">${p}</div>`).join("")}</div>
+    ${t.skus?`<div class="b-sku">
+      <div class="lbl">${L().localizar}</div>
+      ${t.skus.map(k=>`<div class="fila"><span class="cod">${t.cod}</span><span class="skuname">${k}</span></div>`).join("")}
+      ${t.skuNota?`<div class="nota">${t.skuNota}</div>`:""}
+    </div>`:`<div class="b-sku"><div class="lbl">${L().sinProducto}</div>
+      <div class="nota">${L().sinProductoNota}</div></div>`}
+  </div>`;
+
+  const cuerpoTour=()=>`
+  <div class="b-body">
+    <div class="b-main">
+      <div class="b-sec"><p style="font-size:14.5px;color:#22484E;max-width:60ch">${t.desc}</p></div>
+      ${t.itinerario?`<div class="b-sec"><div class="b-h">${L().recorrido}</div>
+        <table class="itin">${t.itinerario.map(r=>`<tr class="${r[2]?'fuerte':''}"><td>${r[0]}</td><td>${r[1]}</td></tr>`).join("")}</table></div>`:""}
+      <div class="b-sec"><div class="b-h v">${L().incluye}</div>${li(t.incluye,"v")}</div>
+      <div class="b-sec"><div class="b-h n">${L().noIncluye}</div>${li(t.noIncluye,"no")}</div>
+      <div class="b-fotos">${t.fotos.map(f=> typeof f==="string"
+        ? `<div class="foto">${f}</div>`
+        : `<figure class="foto-real"><img src="${f.src}" alt="${f.cap}" loading="lazy"><figcaption>${f.cap}</figcaption></figure>`
+      ).join("")}</div>
+    </div>
+    <div class="b-side">
+      <div class="b-sec"><div class="b-h c">${L().edades}</div>
+        <table class="edades">${t.edades.map(e=>`<tr><td>${e[0]}</td><td>${e[1]}</td></tr>`).join("")}</table>
+        ${t.edadNota?`<p class="nota-pie">${t.edadNota}</p>`:""}
+      </div>
+      <div class="b-sec"><div class="b-h a">${L().llevar}</div>${li(t.llevar)}</div>
+      <div class="b-sec"><div class="b-costo"><div class="t">${t.cargo.t}</div><p>${t.cargo.p}</p></div></div>
+      ${t.extra?`<div class="b-sec"><div class="b-h">${t.extra.t}</div>
+        <table class="edades">${t.extra.filas.map(f=>`<tr><td>${f[0]}</td><td>${f[1]}</td></tr>`).join("")}</table>
+        <p class="nota-pie">${t.extra.p}</p></div>`:""}
+      ${t.nacional?`<div class="b-sec"><div class="b-h">${L().nacional}</div>
+        <p style="font-size:13.5px;color:#22484E">${t.nacional}</p></div>`:""}
+      ${t.upsell?[].concat(t.upsell).map(u=>`<div class="b-sec"><div class="upsell"><div class="t">${u.t}</div><p>${u.p}</p></div></div>`).join(""):""}
+      ${t.aviso?`<div class="aviso"><b>${L().antes}</b><br>${t.aviso}</div>`:""}
+      ${t.porvalidar?`<div class="porvalidar"><b>${L().porValidar}</b><br>${t.porvalidar}</div>`:""}
+    </div>
+  </div>`;
+
+  const cuerpoLibre=()=>`
+  <div class="b-body">
+    <div class="b-main">
+      <div class="b-sec"><p style="font-size:14.5px;color:#22484E;max-width:60ch">${t.desc}</p></div>
+      ${t.hotel?`<div class="b-sec"><div class="b-h">${t.hotel.t}</div>
+        ${t.hotel.p.map(x=>`<p style="font-size:14px;color:#22484E;max-width:62ch;margin-bottom:9px">${x}</p>`).join("")}</div>`:""}
+      <div class="b-sec"><div class="b-h c">${L().queHacer}</div>
+        ${t.planes.map(p=>`<div class="plan">
+          <div class="ph">${p.t}</div>
+          <div class="pc ${p.c==='Gratis'?'':'pago'}">${p.c}</div>
+          <p>${p.p}</p>
+        </div>`).join("")}
+      </div>
+    </div>
+    <div class="b-side">
+      <div class="b-sec"><div class="b-h a">${L().llevar}</div>${li(t.llevar)}</div>
+      <div class="b-sec"><div class="b-h">${L().decirle}</div>${li(t.tips,"c")}</div>
+      ${t.upsell?[].concat(t.upsell).map(u=>`<div class="b-sec"><div class="upsell"><div class="t">${u.t}</div><p>${u.p}</p></div></div>`).join(""):""}
+      <div class="b-sec"><div class="b-costo gratis"><div class="t">${L().sinCosto}</div>
+        <p>${L().sinCostoP}</p></div></div>
+    </div>
+  </div>`;
+
+  $("#ficha").innerHTML = cabeza + (esLibre?cuerpoLibre():cuerpoTour());
+  $("#contador").textContent=`${t.dia} ${L().de} 5 · ${t.nombre}`;
+  $("#prev").disabled = i===0;
+  $("#next").disabled = i===DIAS.length-1;
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
+function verIndice(){portada.style.display="none";indice.style.display="block";wrap.style.display="none";window.scrollTo({top:0,behavior:"instant"})}
+function verFicha(i){portada.style.display="none";indice.style.display="none";wrap.style.display="block";render(i)}
+
+function aplicarIdioma(){
+  DIAS = LANG==="es"? DIAS_ES : DIAS_EN;
+  document.querySelectorAll('[data-lang]').forEach(el=>{
+    el.hidden = el.getAttribute("data-lang")!==LANG;
+  });
+  document.documentElement.lang = LANG;
+  ["idiomaPortada","idiomaNav","idiomaIdx"].forEach(id=>{
+    const b=document.getElementById(id); if(b) b.textContent = L().btn;
+  });
+  $("#volver").textContent = L().itinerario;
+  $("#prev").textContent = L().prev;
+  $("#next").textContent = L().next;
+  pintarIndice();
+  if(wrap.style.display==="block") render(actual);
+}
+function alternarIdioma(){ LANG = LANG==="es"? "en":"es"; aplicarIdioma(); }
+["idiomaPortada","idiomaNav","idiomaIdx"].forEach(id=>{
+  const b=document.getElementById(id); if(b) b.onclick=alternarIdioma;
+});
+aplicarIdioma();
+
+$("#entrar").onclick=verIndice;
+$("#volver").onclick=verIndice;
+$("#prev").onclick=()=>verFicha(actual-1);
+$("#next").onclick=()=>verFicha(actual+1);
+document.addEventListener("keydown",e=>{
+  if(wrap.style.display!=="block")return;
+  if(e.key==="ArrowRight"&&actual<DIAS.length-1)verFicha(actual+1);
+  if(e.key==="ArrowLeft"&&actual>0)verFicha(actual-1);
+  if(e.key==="Escape")verIndice();
+});
+</script>
+</body>
+</html>
