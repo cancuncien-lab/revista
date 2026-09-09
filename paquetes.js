@@ -9,6 +9,14 @@ window.PAQUETES = [
     corto: "Xcaret",
     sub: "5 días · 3 parques de Grupo Xcaret · $0 cargos en sitio",
     color: "#0E7C8C"
+  },
+  {
+    slug: "primera-vez",
+    num: 2,
+    titulo: "Nunca he ido a Cancún",
+    corto: "Primera vez",
+    sub: "5 días · Isla Mujeres, Chichén Itzá y Tulum · 2 días para conocer Cancún caminando",
+    color: "#FF7A59"
   }
 ];
 

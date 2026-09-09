@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nunca he ido a Cancún · Itinerario de 5 días · Cancun100</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Questrial&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<script src="/paquetes.js" defer></script>
+<style>
+:root{
+  --magenta:#0E7C8C; --rosa:#00B3BE; --cian:#FF7A59;
+  --verde:#35A96B; --amarillo:#FFC24B; --naranja:#FF8A3D;
+  --tinta:#10333A; --gris:#5A6E72; --linea:#D9E4E2; --papel:#fff;
+  --arena:#EFE7D9; --arenaclara:#FAF3E7; --mar:#04566A; --aqua:#35C8CE;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Karla',sans-serif;background:var(--arena);color:var(--tinta);line-height:1.55}
+.revista{max-width:1000px;margin:0 auto;background:var(--papel);min-height:100vh;
+  box-shadow:0 0 40px rgba(4,60,70,.16)}
+
+/* ---------------- PORTADA ---------------- */
+.portada{position:relative;min-height:100vh;display:flex;flex-direction:column;
+  background-image:linear-gradient(180deg,rgba(2,44,58,.34) 0%,rgba(2,44,58,0) 17%),linear-gradient(96deg,rgba(3,46,60,.50) 0%,rgba(3,46,60,.30) 26%,rgba(3,46,60,.08) 48%,rgba(3,46,60,0) 66%),url(img/01-dd64b0a1.jpg);background-size:cover;background-position:center;background-repeat:no-repeat;color:#fff;overflow:hidden}
+
+
+.p-top{padding:30px 40px 0;display:flex;justify-content:space-between;align-items:flex-start;
+  position:relative;z-index:2;font-size:13px;letter-spacing:.02em}
+.marca-logo{width:250px;height:auto;display:block;filter:drop-shadow(0 2px 14px rgba(2,40,52,.22))}
+@media(max-width:780px){.marca-logo{width:186px}}
+.p-centro{flex:1;display:flex;flex-direction:column;justify-content:center;
+  padding:0 40px;position:relative;z-index:2}
+.p-anio{font-family:'Questrial',sans-serif;font-size:clamp(74px,17vw,168px);
+  line-height:.82;color:rgba(255,255,255,.26);letter-spacing:-.03em;margin-bottom:-8px}
+.p-titulo{font-family:'Questrial',sans-serif;font-size:clamp(38px,7.2vw,74px);
+  line-height:.96;letter-spacing:-.022em;max-width:14ch;text-shadow:0 2px 28px rgba(2,38,50,.32)}
+.p-titulo-en{text-shadow:0 1px 16px rgba(2,38,50,.34);font-family:'Questrial',sans-serif;font-size:clamp(15px,2.4vw,21px);
+  letter-spacing:.06em;text-transform:uppercase;color:var(--amarillo);margin-top:14px}
+.p-bajada{text-shadow:0 1px 18px rgba(2,38,50,.38);margin-top:18px;font-size:clamp(15px,2vw,18px);max-width:44ch;opacity:.92}
+.p-cifras{display:flex;gap:34px;margin-top:34px;flex-wrap:wrap}
+.cifra strong{font-family:'Questrial',sans-serif;font-size:32px;display:block;line-height:1;text-shadow:0 1px 16px rgba(2,38,50,.38)}
+.cifra span{font-size:13px;opacity:.8}
+.ola{position:absolute;left:0;right:0;bottom:74px;width:100%;height:150px;z-index:1;display:block}
+.p-pie{padding:26px 40px 34px;position:relative;z-index:2;
+  background:#FAF3E7;color:#0C5A68;display:flex;justify-content:space-between;
+  align-items:center;flex-wrap:wrap;gap:14px;font-size:13.5px;z-index:3}
+.btn-idioma{background:#fff;color:var(--magenta);border:1.5px solid var(--magenta);
+  font-family:'Questrial',sans-serif;font-size:15px;padding:12px 22px;border-radius:30px;
+  cursor:pointer;transition:background .18s ease}
+.btn-idioma:hover{background:#E9F6F5}
+.btn-idioma:focus-visible{outline:3px solid var(--amarillo);outline-offset:3px}
+.nb.idioma{border-color:var(--magenta);color:var(--magenta);font-weight:600}
+.btn-entrar{background:var(--magenta);color:#fff;border:none;font-family:'Questrial',sans-serif;
+  font-size:16px;padding:13px 26px;border-radius:30px;cursor:pointer;transition:transform .18s ease}
+.btn-entrar:hover{transform:translateY(-2px)}
+.btn-entrar:focus-visible{outline:3px solid var(--naranja);outline-offset:3px}
+
+/* ---------------- ÍNDICE ---------------- */
+.indice{padding:44px 40px 60px;display:none}
+.idx-top{display:flex;align-items:center;gap:13px;margin-bottom:6px}
+.idx-top img{width:40px;height:auto;display:block;flex:none}
+.idx-h{font-family:'Questrial',sans-serif;font-size:34px;color:var(--magenta);
+  letter-spacing:-.015em}
+.idx-sub{color:var(--gris);margin-bottom:26px;max-width:60ch}
+.idx-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:14px}
+.idx-card{border:1px solid var(--linea);border-left:5px solid var(--rosa);
+  padding:16px 18px;cursor:pointer;background:#fff;text-align:left;font:inherit;
+  transition:border-color .16s ease,background .16s ease}
+.idx-card:hover{background:#E9F6F5;border-left-color:var(--magenta)}
+.idx-card:focus-visible{outline:3px solid var(--cian);outline-offset:2px}
+.idx-card.libre{border-left-color:var(--cian)}
+.idx-card.libre:hover{background:#FFF2EC;border-left-color:#E4603F}
+.idx-card .n{font-size:11.5px;color:var(--gris)}
+.idx-card .t{font-family:'Questrial',sans-serif;font-size:18px;color:var(--tinta);
+  margin:3px 0 6px;line-height:1.15}
+.idx-card .d{font-size:13px;color:var(--gris)}
+.idx-card .sku-mini{font-family:ui-monospace,'SFMono-Regular',Menlo,monospace;
+  font-size:11.5px;color:#0E6C7A;background:#E6F4F3;padding:3px 7px;
+  border-radius:3px;display:inline-block;margin-top:7px;word-break:break-word}
+.idx-card .cod-mini{background:var(--magenta);color:#fff;font-size:10.5px;font-weight:700;
+  padding:2px 7px;border-radius:3px;letter-spacing:.04em;margin-right:6px}
+.idx-card.libre .cod-mini{background:var(--cian)}
+.dia-badge{font-family:'Questrial',sans-serif;background:var(--magenta);color:#fff;
+  font-size:12px;padding:3px 10px;border-radius:20px;letter-spacing:.04em;display:inline-block}
+.idx-card.libre .dia-badge{background:var(--cian)}
+
+/* bloque de resumen del paquete */
+.resumen{border:2px solid var(--magenta);border-radius:8px;padding:20px 22px;margin-bottom:26px}
+.resumen h3{font-family:'Questrial',sans-serif;color:var(--magenta);font-size:19px;
+  margin-bottom:10px;font-weight:400}
+.resumen p{font-size:14px;color:#22484E;max-width:70ch}
+.resumen table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:14px}
+.resumen th{text-align:left;background:#E6F4F3;color:var(--magenta);padding:8px 10px;
+  font-family:'Questrial',sans-serif;font-weight:400}
+.resumen td{padding:8px 10px;border-bottom:1px solid var(--linea);vertical-align:top}
+.resumen td:last-child{text-align:right;white-space:nowrap;font-weight:700}
+.resumen tr:last-child td{border-bottom:none}
+.resumen .tot td{background:#E9F6F5;color:var(--magenta);font-weight:700}
+
+.personaliza{border:2px dashed var(--verde);border-radius:8px;padding:16px 18px;
+  margin-bottom:26px;background:#F3FAF5}
+.personaliza .t{font-family:'Questrial',sans-serif;color:#2E7D52;font-size:17px;margin-bottom:7px}
+.personaliza p{font-size:13.8px;color:#22484E;max-width:72ch}
+.alerta-dia{background:#FFF9F0;border:2px solid var(--naranja);border-radius:8px;
+  padding:16px 18px;margin-bottom:26px}
+.alerta-dia .t{font-family:'Questrial',sans-serif;color:#B8690A;font-size:16px;margin-bottom:7px}
+.alerta-dia p{font-size:13.8px;color:#22484E;max-width:70ch}
+.alerta-dia table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:12px}
+.alerta-dia td{padding:6px 0;border-bottom:1px dotted #E8D5B8}
+.alerta-dia td:last-child{text-align:right;font-weight:700;color:#B8690A}
+.alerta-dia tr:last-child td{border-bottom:none}
+
+/* ---------------- FICHA ---------------- */
+.ficha-wrap{display:none}
+.nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--linea);
+  padding:11px 22px;display:flex;align-items:center;gap:12px;justify-content:space-between}
+.nav-btns{display:flex;gap:8px;align-items:center}
+.nav-marca{display:flex;gap:10px;align-items:center}
+.nav-marca img{width:24px;height:auto;display:block}
+.nb{background:#fff;border:1px solid var(--linea);border-radius:6px;padding:7px 13px;
+  font:inherit;font-size:14px;cursor:pointer;color:var(--tinta)}
+.nb:hover{border-color:var(--magenta);color:var(--magenta)}
+.nb:focus-visible{outline:3px solid var(--cian);outline-offset:2px}
+.nb:disabled{opacity:.35;cursor:default}
+.nav .cont{font-size:13px;color:var(--gris)}
+
+.b-head{background:var(--magenta);color:#fff;padding:28px 34px 24px}
+.b-head.libre{background:linear-gradient(135deg,#F2703F,#FFC24B)}
+.b-dia{font-family:'Questrial',sans-serif;font-size:13px;letter-spacing:.14em;
+  text-transform:uppercase;opacity:.75;margin-bottom:7px}
+.b-prov{font-size:12.5px;opacity:.7;margin-bottom:5px}
+.b-title{font-family:'Questrial',sans-serif;font-size:clamp(28px,5vw,38px);line-height:1;
+  letter-spacing:-.014em}
+.b-sub{font-size:15.5px;opacity:.88;margin-top:7px;max-width:56ch}
+.b-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:19px}
+.pill{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);
+  padding:5px 13px;border-radius:20px;font-size:13px}
+.b-sku{margin-top:20px;background:#fff;color:var(--tinta);padding:14px 16px;
+  border-radius:6px;border-left:5px solid var(--amarillo)}
+.b-sku .lbl{font-size:11.5px;color:var(--gris);margin-bottom:7px}
+.b-sku .fila{display:flex;align-items:center;gap:9px;margin-bottom:6px;flex-wrap:wrap}
+.b-sku .fila:last-of-type{margin-bottom:0}
+.cod{background:var(--magenta);color:#fff;font-weight:700;font-size:12px;
+  padding:3px 9px;border-radius:4px;letter-spacing:.04em;flex:none}
+.skuname{font-family:ui-monospace,'SFMono-Regular',Menlo,monospace;font-size:13.5px;
+  font-weight:600;background:#EDF5F4;padding:4px 9px;border-radius:4px;
+  border:1px solid var(--linea);word-break:break-word}
+.b-sku .nota{font-size:12.5px;color:var(--gris);margin-top:9px;line-height:1.45}
+.b-sku .nota b{color:var(--magenta)}
+
+.b-body{display:grid;grid-template-columns:1.3fr .95fr}
+.b-main{padding:26px 32px;border-right:1px solid var(--linea)}
+.b-side{padding:26px 28px;background:#F6FBFA}
+.b-sec{margin-bottom:24px}
+.b-sec:last-child{margin-bottom:0}
+.b-h{font-family:'Questrial',sans-serif;font-size:15.5px;margin-bottom:10px;
+  display:flex;align-items:center;gap:9px}
+.b-h::before{content:"";width:17px;height:3px;background:var(--rosa);border-radius:2px;flex:none}
+.b-h.v::before{background:var(--verde)}
+.b-h.c::before{background:var(--cian)}
+.b-h.n::before{background:var(--naranja)}
+.b-h.a::before{background:var(--amarillo)}
+.lista{list-style:none;font-size:14px}
+.lista li{padding:4px 0 4px 15px;position:relative}
+.lista li::before{content:"";position:absolute;left:0;top:12px;width:5px;height:5px;
+  border-radius:50%;background:var(--rosa)}
+.lista.no li::before{background:#AFC4C1}
+.lista.v li::before{background:var(--verde)}
+.lista.c li::before{background:var(--cian)}
+.itin{border-collapse:collapse;width:100%;font-size:13.5px}
+.itin td{padding:6px 0;border-bottom:1px solid var(--linea)}
+.itin td:last-child{text-align:right;color:var(--gris);white-space:nowrap}
+.itin tr:last-child td{border-bottom:none}
+.itin .fuerte td{font-weight:700;color:var(--magenta)}
+.edades{width:100%;border-collapse:collapse;font-size:13.5px}
+.edades td{padding:5px 0;border-bottom:1px dotted var(--linea)}
+.edades td:last-child{text-align:right;color:var(--gris)}
+.b-costo{border:2px solid var(--magenta);border-radius:6px;padding:14px 16px}
+.b-costo .t{font-family:'Questrial',sans-serif;color:var(--magenta);font-size:14.5px;
+  margin-bottom:6px}
+.b-costo p{font-size:13.5px;color:#22484E}
+.b-costo.gratis{border-color:var(--verde)}
+.upsell{border:2px dashed var(--verde);border-radius:6px;padding:14px 16px;background:#F3FAF5}
+.upsell .t{font-family:'Questrial',sans-serif;color:#2E7D52;font-size:14.5px;margin-bottom:6px}
+.upsell p{font-size:13.5px;color:#22484E}
+.b-costo.gratis .t{color:#2E7D52}
+.aviso{background:#FFF2EC;border:1px solid #FFD2C2;padding:11px 13px;border-radius:5px;
+  font-size:13.5px;margin-top:9px}
+.aviso b{color:var(--magenta)}
+.porvalidar{background:#FFF9F0;border:1px solid #F0D3A8;padding:11px 13px;border-radius:5px;
+  font-size:13.3px;margin-top:14px;color:#22484E}
+.porvalidar b{color:#B8690A}
+.b-fotos{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:6px}
+.foto{background:linear-gradient(135deg,#BFDFDB,#A6CFCA);display:flex;align-items:center;
+  justify-content:center;font-size:11.5px;color:#3F6E69;text-align:center;padding:8px;min-height:98px}
+.foto-real{position:relative;overflow:hidden;background:#E2EFED}
+.foto-real img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/3}
+.foto-real figcaption{position:absolute;left:0;right:0;bottom:0;
+  background:linear-gradient(transparent,rgba(3,42,50,.84));color:#fff;
+  font-size:11.5px;padding:16px 9px 7px;line-height:1.3}
+.nota-pie{font-size:12.5px;color:var(--gris);margin-top:7px}
+
+/* tarjetas de plan libre */
+.plan{border:1px solid var(--linea);border-left:4px solid var(--cian);padding:14px 16px;
+  margin-bottom:12px;background:#fff}
+.plan .ph{font-family:'Questrial',sans-serif;font-size:16px;margin-bottom:3px}
+.plan .pc{display:inline-block;font-size:11.5px;background:#E1F4F2;
+  color:#0E6C7A;padding:2px 8px;border-radius:20px;margin-bottom:7px}
+.plan .pc.pago{background:#FFF2EC;color:#D4552F}
+.plan p{font-size:13.8px;color:#22484E}
+
+@media(max-width:780px){
+  .b-body{grid-template-columns:1fr}
+  .b-main{border-right:none;border-bottom:1px solid var(--linea)}
+  .p-centro,.p-top,.p-pie,.indice{padding-left:24px;padding-right:24px}
+  .b-head,.b-main,.b-side{padding-left:22px;padding-right:22px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="revista">
+
+  <!-- PORTADA -->
+  <section class="portada" id="portada">
+    <div class="p-top">
+      <img class="marca-logo" src="img/02-4a35fba7.png" alt="Cancun100">
+      <div><span data-lang="es">Paquete armado · 5 días</span><span data-lang="en" hidden>Ready-made package · 5 days</span></div>
+    </div>
+    <div class="p-centro">
+      <div class="p-anio">5</div>
+      <h1 class="p-titulo"><span data-lang="es">Nunca he ido a Cancún</span><span data-lang="en" hidden>My first time in Cancun</span></h1>
+      <div class="p-titulo-en"><span data-lang="es">My first time in Cancun · on budget</span><span data-lang="en" hidden>Nunca he ido a Cancún · on budget</span></div>
+      <p class="p-bajada"><span data-lang="es">Cinco días, tres tours y dos días para conocer Cancún caminando. El itinerario para quien llega por primera vez y quiere ver lo más importante sin gastar de más. <b>Todos los paquetes son personalizables.</b></span><span data-lang="en" hidden>Five days, three tours and two days to explore Cancún on foot. The itinerary for the first-time visitor who wants to see the essentials without overspending. <b>Every package can be customised.</b></span></p>
+      <div class="p-cifras">
+        <div class="cifra"><strong>5</strong><span><span data-lang="es">días</span><span data-lang="en" hidden>days</span></span></div>
+        <div class="cifra"><strong>3</strong><span>tours</span></div>
+        <div class="cifra"><strong>3</strong><span><span data-lang="es">destinos</span><span data-lang="en" hidden>destinations</span></span></div>
+        <div class="cifra"><strong>2</strong><span><span data-lang="es">días libres</span><span data-lang="en" hidden>free days</span></span></div>
+      </div>
+    </div>
+    <svg class="ola" viewBox="0 0 1200 130" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,64 C160,116 360,8 610,46 C860,84 1050,22 1200,58 L1200,130 L0,130 Z" fill="rgba(255,255,255,.18)"/>
+      <path d="M0,86 C210,126 410,34 660,74 C910,114 1090,54 1200,88 L1200,130 L0,130 Z" fill="rgba(250,243,231,.42)"/>
+      <path d="M0,106 C240,136 470,66 720,98 C940,126 1100,84 1200,106 L1200,130 L0,130 Z" fill="#FAF3E7"/>
+    </svg>
+    <div class="p-pie">
+      <div>Isla Mujeres · Chichén Itzá · Tulum · Cancún</div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <button class="btn-idioma" id="idiomaPortada">English</button>
+        <button class="btn-entrar" id="entrar"><span data-lang="es">Ver el itinerario</span><span data-lang="en" hidden>See the itinerary</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÍNDICE -->
+  <section class="indice" id="indice">
+    <button class="nb idioma" id="idiomaIdx" style="float:right;margin-top:6px">English</button>
+    <div class="idx-top"><img src="img/03-6c479c0a.png" alt="Cancun100"><h2 class="idx-h"><span data-lang="es">El itinerario, día por día</span><span data-lang="en" hidden>The itinerary, day by day</span></h2></div>
+    <p class="idx-sub"><span data-lang="es">Llega, descansa, y a partir del segundo día un tour diario. Los días 1 y 5 no llevan tour: son para llegar, acomodarse y conocer Cancún por su cuenta. Toca cualquier día para ver la ficha completa.</span><span data-lang="en" hidden>Arrive, settle in, and from the second day one tour a day. Days 1 and 5 carry no tour: they are for arriving, getting oriented and exploring Cancún on their own. Tap any day for the full sheet.</span></p>
+
+    <div class="personaliza">
+      <div class="t"><span data-lang="es">Este paquete es personalizable</span><span data-lang="en" hidden>This package can be customised</span></div>
+      <p><span data-lang="es">Es una propuesta armada, no un paquete cerrado. Se pueden <b>cambiar los tours</b>, <b>mover el orden de los días</b> o <b>agregar actividades</b> en los días libres, según lo que busque el cliente y los días que tenga. Preguntar al asesor qué conviene en cada caso.</span><span data-lang="en" hidden>It is a ready-made proposal, not a closed package. Tours can be <b>swapped</b>, the <b>order of the days moved</b> or <b>activities added</b> on the free days, depending on what the guest wants and how many days they have. Ask your advisor what works best in each case.</span></p>
+    </div>
+
+    <div class="alerta-dia">
+      <div class="t"><span data-lang="es">Antes de cotizar: el itinerario depende del día de llegada</span><span data-lang="en" hidden>Before quoting: the itinerary depends on the arrival day</span></div>
+      <p><span data-lang="es">Tulum Express <b>solo opera miércoles y sábado</b>. Como va en el día 4, el paquete completo solo cuadra si el cliente llega en <b>domingo</b> o en <b>miércoles</b>. Con cualquier otra llegada hay que mover el orden de los tours o cambiar el de Tulum.</span><span data-lang="en" hidden>Tulum Express <b>runs only on Wednesdays and Saturdays</b>. Since it falls on day 4, the full package only fits if the guest arrives on a <b>Sunday</b> or a <b>Wednesday</b>. With any other arrival the tour order has to move, or Tulum has to be swapped.</span></p>
+      <table>
+        <tr><td><span data-lang="es">Llegada en domingo</span><span data-lang="en" hidden>Sunday arrival</span></td><td><span data-lang="es">Tulum cae en miércoles ✓</span><span data-lang="en" hidden>Tulum falls on Wednesday ✓</span></td></tr>
+        <tr><td><span data-lang="es">Llegada en miércoles</span><span data-lang="en" hidden>Wednesday arrival</span></td><td><span data-lang="es">Tulum cae en sábado ✓</span><span data-lang="en" hidden>Tulum falls on Saturday ✓</span></td></tr>
+        <tr><td><span data-lang="es">Cualquier otro día</span><span data-lang="en" hidden>Any other day</span></td><td><span data-lang="es">Reacomodar el orden</span><span data-lang="en" hidden>Reorder the days</span></td></tr>
+      </table>
+    </div>
+
+    <div class="resumen">
+      <h3><span data-lang="es">El efectivo que el cliente saca de su cartera</span><span data-lang="en" hidden>The cash the guest takes out of their wallet</span></h3>
+      <p><span data-lang="es">Estos cargos <b>no van incluidos</b> en el precio del paquete y se pagan el día de la actividad, en el mostrador o en el muelle. Es lo primero que hay que decirle a un cliente que viaja con presupuesto ajustado.</span><span data-lang="en" hidden>These charges are <b>not included</b> in the package price and are paid on the day of the activity, at the counter or at the pier. It is the first thing to tell a guest travelling on a tight budget.</span></p>
+      <table>
+        <tr><th><span data-lang="es">Día</span><span data-lang="en" hidden>Day</span></th><th><span data-lang="es">Concepto</span><span data-lang="en" hidden>Item</span></th><th><span data-lang="es">Monto</span><span data-lang="en" hidden>Amount</span></th></tr>
+        <tr><td><span data-lang="es">Día 2</span><span data-lang="en" hidden>Day 2</span></td><td><span data-lang="es">Uso de muelle · Isla Mujeres</span><span data-lang="en" hidden>Pier fee · Isla Mujeres</span></td><td>300 MXN</td></tr>
+        <tr><td><span data-lang="es">Día 3</span><span data-lang="en" hidden>Day 3</span></td><td><span data-lang="es">Bebidas en Chichén Itzá, no incluidas</span><span data-lang="en" hidden>Drinks at Chichén Itzá, not included</span></td><td><span data-lang="es">Lo que consuma</span><span data-lang="en" hidden>Whatever they order</span></td></tr>
+        <tr><td><span data-lang="es">Día 4</span><span data-lang="en" hidden>Day 4</span></td><td><span data-lang="es">Impuesto de Tulum · nacionales</span><span data-lang="en" hidden>Tulum tax · Mexican nationals</span></td><td>205 MXN</td></tr>
+        <tr><td><span data-lang="es">Día 4</span><span data-lang="en" hidden>Day 4</span></td><td><span data-lang="es">Impuesto de Tulum · extranjeros</span><span data-lang="en" hidden>Tulum tax · foreigners</span></td><td>305 MXN</td></tr>
+        <tr class="tot"><td><span data-lang="es">Mínimo</span><span data-lang="en" hidden>Minimum</span></td><td><span data-lang="es">Nacional, sin extras</span><span data-lang="en" hidden>Mexican national, no extras</span></td><td>505 MXN</td></tr>
+        <tr class="tot"><td><span data-lang="es">Mínimo</span><span data-lang="en" hidden>Minimum</span></td><td><span data-lang="es">Extranjero, sin extras</span><span data-lang="en" hidden>Foreigner, no extras</span></td><td>605 MXN</td></tr>
+      </table>
+      <p style="margin-top:12px;font-size:13px;color:var(--gris)"><span data-lang="es">Aparte quedan las propinas, las fotos profesionales, los lockers y el traslado terrestre opcional del día 2. Cotizar siempre en pesos: si el cliente paga en dólares, el operador convierte al tipo de cambio del día.</span><span data-lang="en" hidden>On top of that come tips, professional photos, lockers and the optional ground transfer on day 2. Always quote in pesos: if the guest pays in dollars, the operator converts at the exchange rate of the day.</span></p>
+    </div>
+
+    <div class="idx-grid" id="idxGrid"></div>
+  </section>
+
+  <!-- FICHA -->
+  <section class="ficha-wrap" id="fichaWrap">
+    <div class="nav">
+      <div class="nav-marca"><img src="img/03-6c479c0a.png" alt="Cancun100"><button class="nb" id="volver">Itinerario</button></div>
+      <div class="cont" id="contador"></div>
+      <div class="nav-btns">
+        <button class="nb idioma" id="idiomaNav">English</button>
+        <button class="nb" id="prev">Anterior</button>
+        <button class="nb" id="next">Siguiente</button>
+      </div>
+    </div>
+    <div id="ficha"></div>
+  </section>
+
+</div>
+
+<script>
+const DIAS_ES = [
+{
+  dia:"Día 1", tipo:"libre",
+  nombre:"Llegada y primer atardecer",
+  prov:"Por su cuenta · no incluido en el paquete",
+  cod:"LIBRE",
+  sub:"El día de llegada no lleva tour. Alcanza para acomodarse, comer barato y ver el primer atardecer.",
+  pills:["Sin tour","Traslado del aeropuerto","Tarde libre"],
+  desc:"El vuelo, el traslado y el check-in se llevan buena parte del día. Lo que queda de tarde da para conocer la zona sin gastar: las playas públicas de Cancún son gratuitas y el centro tiene la comida más barata de la ciudad. Este día conviene no comprometerlo con nada que tenga hora fija.",
+  planes:[
+    {t:"Playa Delfines y el mirador", c:"Gratis", p:"La playa pública más grande de la Zona Hotelera y la única con estacionamiento libre. Ahí están las letras de Cancún, que es la foto que todo el mundo quiere el primer día. Está en el kilómetro 18, del lado del mar abierto."},
+    {t:"Playa Caracol o Playa Langosta", c:"Gratis", p:"Del lado de la laguna, con agua tranquila y poco oleaje. Mejores para meterse al agua que Delfines, que tiene mar abierto. Langosta es además el punto de salida del tour del día 2, así que sirve para ubicarse."},
+    {t:"Cena en el Parque Las Palapas", c:"Económico", p:"En el centro de Cancún, a unos 20 minutos de la Zona Hotelera. Antojitos, marquesitas y comida corrida a precio local, muy por debajo de lo que cuesta cenar en la Zona Hotelera."},
+    {t:"Mercado 28", c:"Económico", p:"Artesanías, souvenirs y fondas. Conviene ir el primer día para ver precios y regatear con calma, en vez de comprar apurado el último día."}
+  ],
+  llevar:["Efectivo en pesos para el transporte público y la cena","Bloqueador biodegradable","Ropa ligera y algo para el sol","Copia digital del voucher de los tours"],
+  hotel:{t:"El hotel",p:["El paquete incluye hospedaje en un hotel a la <b>entrada de la Zona Hotelera</b>, a unos <b>15 minutos de la playa</b>. Es el punto más práctico del itinerario: queda cerca de los puntos de salida de los tours y también del centro, donde está la comida más barata de la ciudad.","<b>El hospedaje es solo habitación, y es a propósito.</b> Los restaurantes de hotel abren a las 7:00 de la mañana para desayunar, y esa es justo la hora del pick-up de Tulum y de Chichén Itzá: el cliente pagaría un desayuno que no alcanza a tomar. Por eso se deja a elección del huésped agregarlo al llegar, si le conviene."]},
+  upsell:[{t:"Nota para la agencia",p:"<b>Este día se le puede agregar un tour.</b> Tenemos opciones que <b>empiezan por la tarde o por la noche</b>, para el cliente que llega temprano y no quiere perder el día. Preguntar al asesor qué opciones se recomiendan según la hora de llegada."},{t:"Upgrade de hotel",p:"Hay <b>dos hoteles</b> para subir de categoría, según disponibilidad: uno <b>pie de playa</b> y otro <b>dentro de la Zona Hotelera</b>. Los dos manejan el mismo concepto de <b>solo hospedaje</b>, por la misma razón de los horarios de pick-up. Preguntar al asesor cuál hay disponible para las fechas del cliente."}],
+  tips:["El camión R1 y R2 recorre toda la Zona Hotelera y cuesta una fracción de lo que cobra un taxi","Los taxis en Cancún no llevan taxímetro: preguntar el precio antes de subir","El agua de la llave no es potable: comprar garrafón sale mucho más barato que botellas individuales"]
+},
+{
+  dia:"Día 2", tipo:"tour",
+  nombre:"Isla Mujeres Pleasure",
+  prov:"Dolphin Discovery (DDU)",
+  cod:"DDU",
+  skus:["Isla Mujeres Pleassure sin transporte"],
+  skuNota:null,
+  sub:"Catamarán a Isla Mujeres con snorkel, buffet, barra libre y club de playa. No es un nado con delfines.",
+  pills:["8 h 30 min","Todos los días","Salida 9:00 a.m.","Playa Langosta"],
+  desc:"Es el mejor primer tour del viaje: sale tarde, regresa temprano y no exige madrugar. Va y regresa en catamarán desde Playa Langosta, en la misma Zona Hotelera, así que el cliente llega caminando o en un taxi corto. Aunque el proveedor es Dolphin Discovery, este producto no incluye ningún contacto con delfines.",
+  itinerario:[
+    ["Llegada por su cuenta a Playa Langosta","8:30 a.m."],
+    ["Salida en catamarán","9:00 a.m.",true],
+    ["Snorkel en el arrecife El Meco","25 min"],
+    ["Club de playa: alberca, camastros y buffet","—"],
+    ["Tiempo libre en el centro de Isla Mujeres","1 h 45 min"],
+    ["Regreso a Playa Langosta","5:30 p.m.",true]
+  ],
+  incluye:[
+    "Traslado marítimo redondo a Isla Mujeres en catamarán",
+    "Buffet y barra libre nacional",
+    "Snorkel en el arrecife El Meco, 25 minutos aproximadamente, con equipo nuevo",
+    "Tiempo libre en el centro de Isla Mujeres, 1 hora 45 minutos",
+    "Club de playa con alberca, sombrillas, camastros, área de hamacas y lockers"
+  ],
+  noIncluye:[
+    "Traslado terrestre desde el hotel: se agrega con costo adicional según la zona",
+    "Uso de muelle: 300 MXN por persona, se paga el mismo día",
+    "Fotografías y souvenirs",
+    "Propinas"
+  ],
+  edades:[
+    ["1 a 5 años","Gratis, con adulto pagado"],
+    ["6 a 12 años","Tarifa de niño"],
+    ["13 en adelante","Tarifa de adulto"]
+  ],
+  edadNota:"El snorkel tiene tope por arriba y por abajo: menores de 10 no entran al agua, de 10 a 16 solo acompañados de un adulto, y <b>los mayores de 60 años no pueden hacer snorkel</b>. Es el único tour del catálogo con edad máxima. Un cliente de 62 años puede comprar el tour y disfrutar todo lo demás, pero hay que decírselo antes de cerrar la venta.",
+  llevar:["Traje de baño y toalla","Cambio de ropa adicional","Efectivo para el muelle, en pesos","Bloqueador biodegradable","Efectivo para fotos y souvenirs"],
+  cargo:{t:"Se paga en el muelle",p:"<b>300 MXN por persona.</b> Lo pagan todos excepto los infantes de 0 a 5 años. Vigente desde el 7 de septiembre de 2026. Si el cliente paga en dólares, el operador convierte al tipo de cambio del día, así que el monto en USD varía: <b>cotizar siempre en pesos</b>."},
+  extra:{t:"Traslado terrestre desde el hotel",filas:[["Zona Hotelera Cancún y Centro","250 MXN"],["Puerto Juárez, Costa Mujeres y Playa Mujeres","300 MXN"],["Riviera Maya, Puerto Morelos y Moon Palace","350 MXN"]],p:"Precio de venta al cliente, por persona. Para este paquete, con hotel en la Zona Hotelera, son 250 MXN. También se puede llegar por cuenta propia a Playa Langosta y ahorrárselo."},
+  aviso:"Los 25 minutos de snorkel conviene mencionarlos al vender: otros tours de la zona ofrecen 40. Es mejor que el cliente lo sepa antes de comprar. Reservación anticipada obligatoria y no reembolsable.",
+  porvalidar:"El ISEPAAA de 50 MXN aplica a programas interactivos con mamíferos marinos. Este tour no lo es, así que en principio no lo lleva — <b>confirmar con el operador</b> antes de cotizarlo sin ese cargo.",
+  fotos:[{"cap": "Catamarán La Victoria", "src": "img/04-ffe7d7eb.jpg"}, {"cap": "Snorkel en el arrecife", "src": "img/05-d247230f.jpg"}, {"cap": "Club de playa en Isla Mujeres", "src": "img/06-0bba025a.jpg"}]
+},
+{
+  dia:"Día 3", tipo:"tour",
+  nombre:"Chichén Itzá Clásico",
+  prov:"Mayab Travel (MAY)",
+  cod:"MAY",
+  skus:["Chichen Itza Clásico"],
+  skuNota:null,
+  sub:"Una de las siete maravillas del mundo, con cenote, aldea maya y buffet regional. El día más largo del viaje.",
+  pills:["12 horas aprox.","Todos los días","Guía bilingüe","Entrada incluida"],
+  desc:"Es el día que justifica el viaje y también el más pesado: doce horas, buena parte en carretera. Por eso va al centro del itinerario, con un día antes y un día después más ligeros. La entrada a la zona arqueológica va incluida, que es lo que más encarece este tour cuando se compra por separado.",
+  itinerario:[
+    ["Aldea Maya","30 min"],
+    ["Buffet regional","50 min"],
+    ["Cenote Xcajum","50 min"],
+    ["Chichén Itzá","2 horas",true],
+    ["Valladolid","20 min"]
+  ],
+  incluye:[
+    "Transportación en viaje redondo",
+    "Cuota de entrada a Chichén Itzá",
+    "Guía de turistas bilingüe",
+    "Tiempo libre dentro de la zona arqueológica",
+    "Almuerzo buffet regional",
+    "Entrada y nado en cenote",
+    "Visita rápida a Valladolid"
+  ],
+  noIncluye:[
+    "Bebidas: ni en la comida ni en el autobús",
+    "Toalla",
+    "Sombrilla",
+    "Chaleco salvavidas",
+    "Renta de lockers en el cenote",
+    "Propinas"
+  ],
+  edades:[
+    ["0 a 2 años","Gratis, sin asiento ni comida"],
+    ["3 a 11 años","Menor, con asiento propio"],
+    ["12 en adelante","Adulto"]
+  ],
+  edadNota:"Los infantes de 0 a 2 viajan en las piernas de los papás. Gratis significa acceso, no comida ni asiento.",
+  llevar:["Calzado cerrado y cómodo, indispensable para la zona arqueológica","Sandalias aparte, para los tiempos libres","Traje de baño, toalla y cambio de ropa seca","Ropa ligera y algo abrigador para el regreso","Protector solar biodegradable","Efectivo para las bebidas, que no van incluidas"],
+  cargo:{t:"Lo que se paga en el sitio",p:"<b>Las bebidas no van incluidas en ningún momento</b>, ni en la comida ni en el autobús. Además hay <b>tarifa adicional por cámaras GoPro, de video o profesionales</b>, cobrada directamente en Chichén Itzá."},
+  aviso:"Dos cosas que generan reclamos: <b>está prohibido entrar con mochilas y bolsas de mano</b> a las zonas arqueológicas, por orden del INAH — se dejan en el autobús. Y no debe usarse crema, bloqueador ni aerosol antes de meterse al cenote, para proteger el ecosistema.",
+  nacional:"Para la tarifa nacional es indispensable presentar <b>INE física y vigente</b> al momento de abordar, y <b>CURP</b> para los menores. Sin identificación oficial que acredite nacionalidad mexicana se cobra en sitio la diferencia a tarifa de extranjero, sin excepción.",
+
+  upsell:{t:"Upgrade a la versión Deluxe",p:"Para el cliente que quiere <b>bebidas y box lunch</b>, el mismo operador maneja una <b>versión Deluxe</b>. Es el mismo recorrido; lo que cambia es lo que va incluido. Consultar el precio al cotizar."},
+  fotos:[{"cap": "Kukulcán desde el aire", "src": "img/07-bfb5a46d.jpg"}, {"cap": "El Castillo de cerca", "src": "img/08-7701c6c3.jpg"}, {"cap": "La explanada de Chichén Itzá", "src": "img/09-f39b00d2.jpg"}]
+},
+{
+  dia:"Día 4", tipo:"tour",
+  nombre:"Tulum Express",
+  prov:"Xperiencias Caribe (XTA)",
+  cod:"XTA",
+  skus:["XTA Tulum Express"],
+  skuNota:"Este proveedor <b>solo opera miércoles y sábado</b>. Es lo que amarra el día de llegada de todo el paquete.",
+  sub:"Las ruinas de Tulum frente al mar Caribe y el cenote Nohoch, de regreso a media tarde.",
+  pills:["8 h 30 min","Miércoles y sábado","Pick-up 6:45 a.m.","Regreso 3:15 p.m."],
+  desc:"Cierra el viaje con la postal más reconocible de la Riviera Maya: una ciudad maya amurallada sobre un acantilado, con el mar Caribe de fondo. Regresa a las tres de la tarde, así que deja la última tarde libre para empacar o para una última vuelta por la playa.",
+  itinerario:[
+    ["Pick-up compartido en la puerta del hotel","desde 6:45 a.m."],
+    ["Zona arqueológica de Tulum","tiempo libre",true],
+    ["Cenote Nohoch, con lámpara y chaleco","—"],
+    ["Comida buffet de comida típica mexicana","—"],
+    ["Regreso al hotel","3:15 p.m. aprox."]
+  ],
+  incluye:[
+    "Transportación redonda en van con aire acondicionado",
+    "Pick-up compartido desde la puerta del hotel",
+    "Entrada a la zona arqueológica de Ruinas de Tulum",
+    "Entrada al Cenote Nohoch, con lámpara y chaleco incluidos",
+    "Comida buffet de comida típica mexicana"
+  ],
+  noIncluye:[
+    "Impuesto de Tulum, que se paga en la entrada",
+    "Guía dentro de la zona arqueológica",
+    "Bebidas adicionales",
+    "Propinas"
+  ],
+  edades:[
+    ["0 a 3 años","Gratis, sin asiento y sin comida"],
+    ["4 en adelante","Tarifa de adulto"]
+  ],
+  edadNota:"<b>Este proveedor no tiene tarifa de menor.</b> Desde los 4 años todos pagan adulto. Es importante decirlo al cotizar familias, porque es lo contrario de lo que la mayoría asume.",
+  llevar:["Traje de baño, toalla y cambio de ropa seca para el cenote","Calzado cerrado y cómodo para la zona arqueológica","Protector solar biodegradable, sin aplicarlo antes de entrar al cenote","Efectivo para el impuesto de Tulum","Gorra y agua: hay poca sombra en las ruinas"],
+  cargo:{t:"Impuesto de Tulum, se paga en la entrada",p:"<b>Nacionales: 205 MXN o 12 USD.</b><br><b>Extranjeros: 305 MXN o 18 USD.</b><br>No está incluido en el precio de venta y el cliente lo paga el día del tour."},
+  aviso:"<b>No lleva guía dentro de la zona arqueológica.</b> El tiempo en las ruinas es libre y la explicación de los puntos importantes se da durante el traslado. Muchos clientes asumen que hay guía adentro y esa es una queja frecuente: mencionarlo al vender.<br><br><b>Este tour no maneja restricciones.</b> No hay edad máxima ni condiciones médicas que impidan participar. Aun así, conviene decirle al cliente que el cenote se nada con chaleco y que la zona arqueológica se recorre a pie, con poca sombra.",
+
+  upsell:{t:"Upgrade a la versión Deluxe",p:"El mismo operador maneja una <b>versión Deluxe</b> de este tour. Mismo recorrido, con más servicios incluidos. Consultar qué incluye y el precio al cotizar."},
+  fotos:[{"cap": "Ruinas de Tulum frente al mar", "src": "img/10-44b47eab.jpg"}, {"cap": "Cenote Nohoch", "src": "img/11-1250b166.jpg"}, {"cap": "Lámpara incluida para la parte oscura", "src": "img/12-490241b9.jpg"}]
+},
+{
+  dia:"Día 5", tipo:"libre",
+  nombre:"Última mañana y salida",
+  prov:"Por su cuenta · no incluido en el paquete",
+  cod:"LIBRE",
+  sub:"Sin tour, para que nadie pierda un vuelo. La mañana alcanza para playa o para las últimas compras.",
+  pills:["Sin tour","Check-out","Traslado al aeropuerto"],
+  desc:"El último día se deja libre a propósito: un tour de día completo el día del vuelo es la forma más segura de perderlo. La mayoría de los hoteles guarda el equipaje después del check-out sin costo, así que la mañana queda aprovechable aunque haya que dejar el cuarto a mediodía.",
+  planes:[
+    {t:"Playa Caracol antes del calor", c:"Gratis", p:"Agua tranquila y del lado protegido. Es la mejor opción para un último chapuzón rápido sin alejarse del hotel."},
+    {t:"Mercado 28 para lo que faltó", c:"Económico", p:"Es donde se compran los souvenirs de verdad. Regatear es normal y esperado: el primer precio nunca es el precio."},
+    {t:"Desayuno en el centro", c:"Económico", p:"Un desayuno en el centro de Cancún cuesta una fracción de lo que cuesta en la Zona Hotelera, y el trayecto en camión es corto."},
+    {t:"Traslado al aeropuerto", c:"Se cotiza aparte", p:"Calcular llegar 3 horas antes para vuelo internacional y 2 para nacional. Desde la Zona Hotelera el trayecto es de 20 a 40 minutos según el tráfico."}
+  ],
+  llevar:["Pasaporte o identificación a la mano, no en la maleta documentada","Efectivo en pesos para el desayuno y el mercado","Una bolsa aparte para lo mojado, si hubo playa"],
+  upsell:{t:"Nota para la agencia",p:"<b>Este día también se le puede agregar un tour.</b> Contamos con <b>tours cortos de medio día</b> para que el cliente haga una última actividad y alcance su vuelo de regreso. Preguntar al asesor qué opciones se recomiendan según la hora del vuelo."},
+  tips:["Guardar el equipaje en el hotel después del check-out casi siempre es gratis: preguntar en recepción","Los souvenirs del aeropuerto cuestan el triple que en el Mercado 28","Si el vuelo sale tarde, la playa pública sigue disponible aunque ya se haya hecho el check-out"]
+}
+];
+const DIAS_EN = [{"dia": "Day 1", "tipo": "libre", "nombre": "Arrival and first sunset", "prov": "On their own · not included in the package", "cod": "FREE", "sub": "The arrival day has no tour. There is time to settle in, eat cheap and catch the first sunset.", "pills": ["No tour", "Airport transfer", "Free afternoon"], "desc": "The flight, the transfer and check-in take up most of the day. What is left of the afternoon is enough to get to know the area without spending: Cancún's public beaches are free and downtown has the cheapest food in the city. It is best not to commit this day to anything with a fixed time.", "hotel": {"t": "The hotel", "p": ["The package includes accommodation at a hotel at the <b>entrance of the Hotel Zone</b>, about <b>15 minutes from the beach</b>. It is the most practical spot for this itinerary: close to the tour departure points and also to downtown, where the cheapest food in the city is.", "<b>The stay is room only, and that is on purpose.</b> Hotel restaurants open at 7:00 a.m. for breakfast, and that is exactly the pick-up time for Tulum and Chichén Itzá: the guest would pay for a breakfast they cannot eat. That is why we leave it up to them to add it on arrival, if it suits them."]}, "planes": [{"t": "Playa Delfines and the lookout", "c": "Free", "p": "The largest public beach in the Hotel Zone and the only one with free parking. The Cancún letters are there, which is the photo everyone wants on day one. It is at kilometer 18, on the open sea side."}, {"t": "Playa Caracol or Playa Langosta", "c": "Free", "p": "On the lagoon side, with calm water and little surf. Better for swimming than Delfines, which faces the open sea. Langosta is also the departure point for the day 2 tour, so it helps to get oriented."}, {"t": "Dinner at Parque Las Palapas", "c": "Cheap", "p": "In downtown Cancún, about 20 minutes from the Hotel Zone. Mexican street food, marquesitas and set menus at local prices, far below what dinner costs in the Hotel Zone."}, {"t": "Mercado 28", "c": "Cheap", "p": "Crafts, souvenirs and food stalls. Worth going on the first day to check prices and haggle calmly, instead of buying in a rush on the last day."}], "llevar": ["Cash in pesos for public transport and dinner", "Biodegradable sunscreen", "Light clothing and something for the sun", "A digital copy of the tour vouchers"], "tips": ["The R1 and R2 buses run the whole Hotel Zone and cost a fraction of a taxi", "Taxis in Cancún have no meter: agree the price before getting in", "Tap water is not drinkable: a water jug is far cheaper than individual bottles"], "upsell": [{"t": "Note for the agency", "p": "<b>A tour can be added to this day.</b> We have options that <b>start in the afternoon or at night</b>, for the guest who arrives early and does not want to lose the day. Ask your advisor which options work best for their arrival time."}, {"t": "Hotel upgrade", "p": "There are <b>two hotels</b> to move up a category, subject to availability: one <b>right on the beach</b> and another <b>inside the Hotel Zone</b>. Both work on the same <b>room only</b> basis, for the same reason of pick-up times. Ask your advisor which one is available for the guest's dates."}]}, {"dia": "Day 2", "tipo": "tour", "nombre": "Isla Mujeres Pleasure", "prov": "Dolphin Discovery (DDU)", "cod": "DDU", "skus": ["Isla Mujeres Pleassure sin transporte"], "skuNota": null, "sub": "Catamaran to Isla Mujeres with snorkeling, buffet, open bar and beach club. It is not a dolphin swim.", "pills": ["8 h 30 min", "Every day", "9:00 a.m. departure", "Playa Langosta"], "desc": "It is the best first tour of the trip: it leaves late, returns early and requires no early start. It sails there and back from Playa Langosta, in the Hotel Zone itself, so the guest arrives on foot or with a short taxi ride. Although the operator is Dolphin Discovery, this product involves no contact with dolphins.", "itinerario": [["Arrive on your own at Playa Langosta", "8:30 a.m."], ["Departure by catamaran", "9:00 a.m.", true], ["Snorkeling at El Meco reef", "25 min"], ["Beach club: pool, loungers and buffet", "—"], ["Free time in downtown Isla Mujeres", "1 h 45 min"], ["Return to Playa Langosta", "5:30 p.m.", true]], "incluye": ["Round-trip crossing to Isla Mujeres by catamaran", "Buffet and domestic open bar", "Snorkeling at El Meco reef, about 25 minutes, with new equipment", "Free time in downtown Isla Mujeres, 1 hour 45 minutes", "Beach club with pool, umbrellas, loungers, hammock area and lockers"], "noIncluye": ["Ground transfer from the hotel: added at an extra cost depending on the zone", "Pier fee: 300 MXN per person, paid on the day", "Photographs and souvenirs", "Tips"], "edades": [["1 to 5 years", "Free, with a paying adult"], ["6 to 12 years", "Child rate"], ["13 and over", "Adult rate"]], "edadNota": "Snorkeling has both a lower and an upper limit: under 10s do not go in the water, 10 to 16 only with an adult, and <b>guests over 60 cannot snorkel</b>. It is the only tour in the catalogue with a maximum age. A 62-year-old can buy the tour and enjoy everything else, but they must be told before closing the sale.", "llevar": ["Swimsuit and towel", "An extra change of clothes", "Cash for the pier fee, in pesos", "Biodegradable sunscreen", "Cash for photos and souvenirs"], "cargo": {"t": "Paid at the pier", "p": "<b>300 MXN per person.</b> Everyone pays it except infants aged 0 to 5. In force since 7 September 2026. If the guest pays in dollars, the operator converts at the exchange rate of the day, so the amount in USD varies: <b>always quote in pesos</b>."}, "extra": {"t": "Ground transfer from the hotel", "filas": [["Cancún Hotel Zone and Downtown", "250 MXN"], ["Puerto Juárez, Costa Mujeres and Playa Mujeres", "300 MXN"], ["Riviera Maya, Puerto Morelos and Moon Palace", "350 MXN"]], "p": "Selling price to the guest, per person. For this package, with a hotel in the Hotel Zone, it is 250 MXN. They can also make their own way to Playa Langosta and save it."}, "aviso": "The 25 minutes of snorkeling are worth mentioning when selling: other tours in the area offer 40. Better that the guest knows before buying. Advance booking is mandatory and non-refundable.", "porvalidar": "The 50 MXN ISEPAAA applies to interactive programmes with marine mammals. This tour is not one, so in principle it does not carry it — <b>confirm with the operator</b> before quoting without that charge.", "fotos": [{"cap": "La Victoria catamaran", "src": "img/04-ffe7d7eb.jpg"}, {"cap": "Snorkeling on the reef", "src": "img/05-d247230f.jpg"}, {"cap": "Beach club on Isla Mujeres", "src": "img/06-0bba025a.jpg"}]}, {"dia": "Day 3", "tipo": "tour", "nombre": "Chichén Itzá Classic", "prov": "Mayab Travel (MAY)", "cod": "MAY", "skus": ["Chichen Itza Clásico"], "skuNota": null, "sub": "One of the seven wonders of the world, with a cenote, a Maya village and a regional buffet. The longest day of the trip.", "pills": ["About 12 hours", "Every day", "Bilingual guide", "Entrance included"], "desc": "This is the day that justifies the trip and also the hardest one: twelve hours, much of it on the road. That is why it sits in the middle of the itinerary, with a lighter day before and after. The entrance to the archaeological site is included, which is what makes this tour expensive when bought separately.", "itinerario": [["Maya village", "30 min"], ["Regional buffet", "50 min"], ["Xcajum cenote", "50 min"], ["Chichén Itzá", "2 hours", true], ["Valladolid", "20 min"]], "incluye": ["Round-trip transport", "Chichén Itzá entrance fee", "Bilingual tour guide", "Free time inside the archaeological site", "Regional buffet lunch", "Entrance and swim at a cenote", "Short visit to Valladolid"], "noIncluye": ["Drinks: neither with the meal nor on the bus", "Towel", "Umbrella", "Life jacket", "Locker rental at the cenote", "Tips"], "edades": [["0 to 2 years", "Free, no seat and no meal"], ["3 to 11 years", "Child, with their own seat"], ["12 and over", "Adult"]], "edadNota": "Infants aged 0 to 2 travel on their parents' lap. Free means access, not food or a seat.", "llevar": ["Closed, comfortable shoes, essential for the archaeological site", "Sandals as well, for the free time", "Swimsuit, towel and a dry change of clothes", "Light clothing and something warm for the ride back", "Biodegradable sunscreen", "Cash for drinks, which are not included"], "cargo": {"t": "What is paid on site", "p": "<b>Drinks are not included at any point</b>, neither with the meal nor on the bus. There is also an <b>extra fee for GoPro, video or professional cameras</b>, charged directly at Chichén Itzá."}, "aviso": "Two things that generate complaints: <b>backpacks and handbags are not allowed</b> in the archaeological sites, by INAH order — they stay on the bus. And no cream, sunscreen or spray should be used before entering the cenote, to protect the ecosystem.", "nacional": "For the Mexican national rate a <b>valid physical INE</b> must be presented when boarding, and a <b>CURP</b> for minors. Without official ID proving Mexican nationality, the difference to the foreigner rate is charged on the spot, without exception.", "upsell": {"t": "Upgrade to the Deluxe version", "p": "For the guest who wants <b>drinks and a box lunch</b>, the same operator runs a <b>Deluxe version</b>. Same route; what changes is what is included. Ask for the price when quoting."}, "fotos": [{"cap": "Kukulcán from the air", "src": "img/07-bfb5a46d.jpg"}, {"cap": "El Castillo up close", "src": "img/08-7701c6c3.jpg"}, {"cap": "The Chichén Itzá esplanade", "src": "img/09-f39b00d2.jpg"}]}, {"dia": "Day 4", "tipo": "tour", "nombre": "Tulum Express", "prov": "Xperiencias Caribe (XTA)", "cod": "XTA", "skus": ["XTA Tulum Express"], "skuNota": "This operator <b>runs only on Wednesdays and Saturdays</b>. That is what fixes the arrival day for the whole package.", "sub": "The Tulum ruins facing the Caribbean and the Nohoch cenote, back by mid-afternoon.", "pills": ["8 h 30 min", "Wednesday and Saturday", "6:45 a.m. pick-up", "3:15 p.m. return"], "desc": "It closes the trip with the most recognisable postcard of the Riviera Maya: a walled Maya city on a cliff, with the Caribbean behind it. It returns at three in the afternoon, leaving the last afternoon free for packing or one more walk on the beach.", "itinerario": [["Shared pick-up at the hotel door", "from 6:45 a.m."], ["Tulum archaeological site", "free time", true], ["Nohoch cenote, with lamp and life jacket", "—"], ["Buffet of typical Mexican food", "—"], ["Return to the hotel", "around 3:15 p.m."]], "incluye": ["Round-trip transport in an air-conditioned van", "Shared pick-up at the hotel door", "Entrance to the Tulum archaeological site", "Entrance to the Nohoch cenote, lamp and life jacket included", "Buffet of typical Mexican food"], "noIncluye": ["Tulum tax, paid at the entrance", "Guide inside the archaeological site", "Additional drinks", "Tips"], "edades": [["0 to 3 years", "Free, no seat and no meal"], ["4 and over", "Adult rate"]], "edadNota": "<b>This operator has no child rate.</b> From age 4 everyone pays adult. It matters when quoting families, because it is the opposite of what most people assume.", "llevar": ["Swimsuit, towel and a dry change of clothes for the cenote", "Closed, comfortable shoes for the archaeological site", "Biodegradable sunscreen, not applied before entering the cenote", "Cash for the Tulum tax", "Cap and water: there is little shade at the ruins"], "cargo": {"t": "Tulum tax, paid at the entrance", "p": "<b>Mexican nationals: 205 MXN or 12 USD.</b><br><b>Foreigners: 305 MXN or 18 USD.</b><br>It is not included in the selling price and the guest pays it on the day of the tour."}, "aviso": "<b>There is no guide inside the archaeological site.</b> Time at the ruins is free and the explanation of the key points is given during the drive. Many guests assume there is a guide inside and that is a frequent complaint: mention it when selling.<br><br><b>This tour has no restrictions.</b> There is no maximum age and no medical conditions that prevent taking part. Even so, it is worth telling the guest that the cenote is swum with a life jacket and that the archaeological site is walked, with little shade.", "upsell": {"t": "Upgrade to the Deluxe version", "p": "The same operator runs a <b>Deluxe version</b> of this tour. Same route, with more services included. Ask what it includes and the price when quoting."}, "fotos": [{"cap": "Tulum ruins facing the sea", "src": "img/10-44b47eab.jpg"}, {"cap": "Nohoch cenote", "src": "img/11-1250b166.jpg"}, {"cap": "Lamp included for the dark section", "src": "img/12-490241b9.jpg"}]}, {"dia": "Day 5", "tipo": "libre", "nombre": "Last morning and departure", "prov": "On their own · not included in the package", "cod": "FREE", "sub": "No tour, so nobody misses a flight. The morning is enough for the beach or for last-minute shopping.", "pills": ["No tour", "Check-out", "Airport transfer"], "desc": "The last day is deliberately left free: a full-day tour on the day of the flight is the surest way to miss it. Most hotels store luggage after check-out at no cost, so the morning stays usable even if the room has to be vacated at noon.", "planes": [{"t": "Playa Caracol before it gets hot", "c": "Free", "p": "Calm water on the sheltered side. The best option for one last quick swim without going far from the hotel."}, {"t": "Mercado 28 for whatever is missing", "c": "Cheap", "p": "This is where the real souvenirs are bought. Haggling is normal and expected: the first price is never the price."}, {"t": "Breakfast downtown", "c": "Cheap", "p": "Breakfast in downtown Cancún costs a fraction of what it costs in the Hotel Zone, and the bus ride is short."}, {"t": "Transfer to the airport", "c": "Quoted separately", "p": "Plan to arrive 3 hours early for an international flight and 2 for a domestic one. From the Hotel Zone the ride is 20 to 40 minutes depending on traffic."}], "llevar": ["Passport or ID at hand, not in checked luggage", "Cash in pesos for breakfast and the market", "A separate bag for anything wet, if there was beach time"], "tips": ["Storing luggage at the hotel after check-out is almost always free: ask at reception", "Airport souvenirs cost three times what they cost at Mercado 28", "If the flight leaves late, the public beach is still available even after check-out"], "upsell": [{"t": "Note for the agency", "p": "<b>A tour can be added to this day too.</b> We have <b>short half-day tours</b> so the guest can fit in one last activity and still catch their flight home. Ask your advisor which options work best for their flight time."}]}];
+
+const LABELS={
+ es:{itinerario:"Itinerario",prev:"Anterior",next:"Siguiente",de:"de",
+  localizar:"Cómo localizarlo en la lista de precios",
+  sinProducto:"Este día no lleva producto del catálogo",
+  sinProductoNota:'Las sugerencias de abajo son <b>por cuenta del cliente</b> y no forman parte del paquete. Sirven para que el asesor pueda responder "¿y qué hago ese día?".',
+  recorrido:"Cómo se recorre el día",incluye:"Incluye",noIncluye:"No incluye",
+  edades:"Edades",llevar:"Qué llevar",antes:"Antes de vender",porValidar:"Por validar",
+  nacional:"Tarifa nacional",queHacer:"Qué se puede hacer",decirle:"Para decirle al cliente",
+  sinCosto:"Sin costo para la agencia",
+  sinCostoP:"Tal como está armado, este día no consume ningún producto del catálogo. Todo lo de arriba lo paga el cliente por su cuenta y sirve como valor agregado de la asesoría.",
+  btn:"English"},
+ en:{itinerario:"Itinerary",prev:"Previous",next:"Next",de:"of",
+  localizar:"How to find it in the price list",
+  sinProducto:"This day carries no catalogue product",
+  sinProductoNota:'The suggestions below are <b>at the guest\'s own expense</b> and are not part of the package. They are there so the advisor can answer "and what do I do that day?".',
+  recorrido:"How the day runs",incluye:"Included",noIncluye:"Not included",
+  edades:"Ages",llevar:"What to bring",antes:"Before selling",porValidar:"To be confirmed",
+  nacional:"Mexican national rate",queHacer:"What they can do",decirle:"To tell the guest",
+  sinCosto:"No cost to the agency",
+  sinCostoP:"As it is built, this day uses no catalogue product. Everything above is paid by the guest and works as added value from the advisor.",
+  btn:"Español"}
+};
+let LANG="es";
+let DIAS = DIAS_ES;
+const L = ()=>LABELS[LANG];
+
+const $ = s=>document.querySelector(s);
+const portada=$("#portada"), indice=$("#indice"), wrap=$("#fichaWrap");
+let actual=0;
+
+function pintarIndice(){
+  $("#idxGrid").innerHTML = DIAS.map((t,i)=>
+    `<button class="idx-card ${t.tipo==='libre'?'libre':''}" data-i="${i}">
+      <div class="dia-badge">${t.dia}</div>
+      <div class="t">${t.nombre}</div>
+      <div class="d">${t.pills[0]} · ${t.pills[1]}</div>
+      <div class="n" style="margin-top:6px"><span class="cod-mini">${t.cod}</span>${t.prov}</div>
+      ${(t.skus||[]).map(k=>`<div class="sku-mini">${k}</div>`).join("")}
+    </button>`).join("");
+  document.querySelectorAll(".idx-card").forEach(b=>b.onclick=()=>verFicha(+b.dataset.i));
+}
+pintarIndice();
+
+function li(arr,cls=""){return `<ul class="lista ${cls}">${arr.map(x=>`<li>${x}</li>`).join("")}</ul>`}
+
+function render(i){
+  const t=DIAS[i]; actual=i;
+  const esLibre = t.tipo==="libre";
+
+  const cabeza=`
+  <div class="b-head ${esLibre?'libre':''}">
+    <div class="b-dia">${t.dia}</div>
+    <div class="b-title">${t.nombre}</div>
+    <div class="b-sub">${t.sub}</div>
+    <div class="b-pills">${t.pills.map(p=>`<div class="pill">${p}</div>`).join("")}</div>
+    ${t.skus?`<div class="b-sku">
+      <div class="lbl">${L().localizar}</div>
+      ${t.skus.map(k=>`<div class="fila"><span class="cod">${t.cod}</span><span class="skuname">${k}</span></div>`).join("")}
+      ${t.skuNota?`<div class="nota">${t.skuNota}</div>`:""}
+    </div>`:`<div class="b-sku"><div class="lbl">${L().sinProducto}</div>
+      <div class="nota">${L().sinProductoNota}</div></div>`}
+  </div>`;
+
+  const cuerpoTour=()=>`
+  <div class="b-body">
+    <div class="b-main">
+      <div class="b-sec"><p style="font-size:14.5px;color:#22484E;max-width:60ch">${t.desc}</p></div>
+      ${t.itinerario?`<div class="b-sec"><div class="b-h">${L().recorrido}</div>
+        <table class="itin">${t.itinerario.map(r=>`<tr class="${r[2]?'fuerte':''}"><td>${r[0]}</td><td>${r[1]}</td></tr>`).join("")}</table></div>`:""}
+      <div class="b-sec"><div class="b-h v">${L().incluye}</div>${li(t.incluye,"v")}</div>
+      <div class="b-sec"><div class="b-h n">${L().noIncluye}</div>${li(t.noIncluye,"no")}</div>
+      <div class="b-fotos">${t.fotos.map(f=> typeof f==="string"
+        ? `<div class="foto">${f}</div>`
+        : `<figure class="foto-real"><img src="${f.src}" alt="${f.cap}" loading="lazy"><figcaption>${f.cap}</figcaption></figure>`
+      ).join("")}</div>
+    </div>
+    <div class="b-side">
+      <div class="b-sec"><div class="b-h c">${L().edades}</div>
+        <table class="edades">${t.edades.map(e=>`<tr><td>${e[0]}</td><td>${e[1]}</td></tr>`).join("")}</table>
+        ${t.edadNota?`<p class="nota-pie">${t.edadNota}</p>`:""}
+      </div>
+      <div class="b-sec"><div class="b-h a">${L().llevar}</div>${li(t.llevar)}</div>
+      <div class="b-sec"><div class="b-costo"><div class="t">${t.cargo.t}</div><p>${t.cargo.p}</p></div></div>
+      ${t.extra?`<div class="b-sec"><div class="b-h">${t.extra.t}</div>
+        <table class="edades">${t.extra.filas.map(f=>`<tr><td>${f[0]}</td><td>${f[1]}</td></tr>`).join("")}</table>
+        <p class="nota-pie">${t.extra.p}</p></div>`:""}
+      ${t.nacional?`<div class="b-sec"><div class="b-h">${L().nacional}</div>
+        <p style="font-size:13.5px;color:#22484E">${t.nacional}</p></div>`:""}
+      ${t.upsell?[].concat(t.upsell).map(u=>`<div class="b-sec"><div class="upsell"><div class="t">${u.t}</div><p>${u.p}</p></div></div>`).join(""):""}
+      ${t.aviso?`<div class="aviso"><b>${L().antes}</b><br>${t.aviso}</div>`:""}
+      ${t.porvalidar?`<div class="porvalidar"><b>${L().porValidar}</b><br>${t.porvalidar}</div>`:""}
+    </div>
+  </div>`;
+
+  const cuerpoLibre=()=>`
+  <div class="b-body">
+    <div class="b-main">
+      <div class="b-sec"><p style="font-size:14.5px;color:#22484E;max-width:60ch">${t.desc}</p></div>
+      ${t.hotel?`<div class="b-sec"><div class="b-h">${t.hotel.t}</div>
+        ${t.hotel.p.map(x=>`<p style="font-size:14px;color:#22484E;max-width:62ch;margin-bottom:9px">${x}</p>`).join("")}</div>`:""}
+      <div class="b-sec"><div class="b-h c">${L().queHacer}</div>
+        ${t.planes.map(p=>`<div class="plan">
+          <div class="ph">${p.t}</div>
+          <div class="pc ${p.c==='Gratis'?'':'pago'}">${p.c}</div>
+          <p>${p.p}</p>
+        </div>`).join("")}
+      </div>
+    </div>
+    <div class="b-side">
+      <div class="b-sec"><div class="b-h a">${L().llevar}</div>${li(t.llevar)}</div>
+      <div class="b-sec"><div class="b-h">${L().decirle}</div>${li(t.tips,"c")}</div>
+      ${t.upsell?[].concat(t.upsell).map(u=>`<div class="b-sec"><div class="upsell"><div class="t">${u.t}</div><p>${u.p}</p></div></div>`).join(""):""}
+      <div class="b-sec"><div class="b-costo gratis"><div class="t">${L().sinCosto}</div>
+        <p>${L().sinCostoP}</p></div></div>
+    </div>
+  </div>`;
+
+  $("#ficha").innerHTML = cabeza + (esLibre?cuerpoLibre():cuerpoTour());
+  $("#contador").textContent=`${t.dia} ${L().de} 5 · ${t.nombre}`;
+  $("#prev").disabled = i===0;
+  $("#next").disabled = i===DIAS.length-1;
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
+function verIndice(){portada.style.display="none";indice.style.display="block";wrap.style.display="none";window.scrollTo({top:0,behavior:"instant"})}
+function verFicha(i){portada.style.display="none";indice.style.display="none";wrap.style.display="block";render(i)}
+
+function aplicarIdioma(){
+  DIAS = LANG==="es"? DIAS_ES : DIAS_EN;
+  document.querySelectorAll('[data-lang]').forEach(el=>{
+    el.hidden = el.getAttribute("data-lang")!==LANG;
+  });
+  document.documentElement.lang = LANG;
+  ["idiomaPortada","idiomaNav","idiomaIdx"].forEach(id=>{
+    const b=document.getElementById(id); if(b) b.textContent = L().btn;
+  });
+  $("#volver").textContent = L().itinerario;
+  $("#prev").textContent = L().prev;
+  $("#next").textContent = L().next;
+  pintarIndice();
+  if(wrap.style.display==="block") render(actual);
+}
+function alternarIdioma(){ LANG = LANG==="es"? "en":"es"; aplicarIdioma(); }
+["idiomaPortada","idiomaNav","idiomaIdx"].forEach(id=>{
+  const b=document.getElementById(id); if(b) b.onclick=alternarIdioma;
+});
+aplicarIdioma();
+
+$("#entrar").onclick=verIndice;
+$("#volver").onclick=verIndice;
+$("#prev").onclick=()=>verFicha(actual-1);
+$("#next").onclick=()=>verFicha(actual+1);
+document.addEventListener("keydown",e=>{
+  if(wrap.style.display!=="block")return;
+  if(e.key==="ArrowRight"&&actual<DIAS.length-1)verFicha(actual+1);
+  if(e.key==="ArrowLeft"&&actual>0)verFicha(actual-1);
+  if(e.key==="Escape")verIndice();
+});
+</script>
+</body>
+</html>

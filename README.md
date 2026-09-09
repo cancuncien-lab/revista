@@ -6,6 +6,7 @@ Sitio estático desplegado en Vercel. Cada paquete es una carpeta con su propio 
 index.html        portada con las tarjetas de todos los paquetes
 paquetes.js       lista de paquetes + barra de pestañas compartida
 xcaret/           Paquete 1 · Xcaret sin romper el cochinito
+primera-vez/      Paquete 2 · Nunca he ido a Cancún
 ```
 
 ## Agregar un paquete
